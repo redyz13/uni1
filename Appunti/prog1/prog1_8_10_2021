@@ -57,3 +57,12 @@ Sono associativi a sinistra e producono 0 (falso) o 1 (vero)
 Sia && che || eseguono una valutazione detta a "circuito breve" ("short-circuit"):
 	- Prima valutano l'operando sinistro e poi quello destro
 	- i > 0 && ++j > 0 Se i > 0 è falso, allora ++j > 0 non viene valutato e 		quindi j non viene incrementata
+	
+-----------> Operatore condizionale: <-----------
+L'operatore condizionale permette di creare un'espressione che produce uno fra due valori in funzione di una condizione
+
+- L'operatore condizionale è specificato con i 2 simboli ? e : che devono essere usati insieme nel seguente modo: exrp1 ? expr2 : expr3
+	Se expr1 è vera allora passa a expr2, Se expr2 è falsa allora expr3
+- Gli operandi possono essere di qualsiasi tipo
+- Un'espressione di questo tipo è detta espressione condizionale.
+	
