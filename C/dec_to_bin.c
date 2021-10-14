@@ -16,7 +16,7 @@ int main() {
 
     printf("\n%d in decimal equals ", dnum); 
 
-    for(i-=1; i >= 0; i--) {
+    for(i -= 1; i >= 0; i--) {
         printf("%d", bnum[i]);
     }
 
