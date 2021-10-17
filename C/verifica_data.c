@@ -29,8 +29,6 @@ int main() {
     bisestile = restituisci_anno(data) % 4;
     verifica_bisestile = (bisestile != 1 && restituisci_mese(data) == 2 && restituisci_giorno(data) < 29) || (bisestile == 0 && restituisci_mese(data) == 2
         && restituisci_giorno(data) == 29);
-
-    printf("\n%d\n", verifica_bisestile);
     
     // Terzo controllo - Verifica che i mesi 04, 06, 09 e 11 abbiano 30 giorni
     verifica_mese_giorno30 = (restituisci_mese(data) == 4 || restituisci_mese(data) == 6
