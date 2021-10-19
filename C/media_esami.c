@@ -7,7 +7,7 @@
 
 int main() {
     int voto = 0, contatore_voti = 0;
-    float somma= 0;
+    int somma = 0;
     
     printf("\nCalcolo media esami: ");
     printf("\nIl voto deve essere compreso tra 18 e 30 o essere pari a 33 (lode)");
@@ -29,7 +29,7 @@ int main() {
        }
     }
     
-    printf("\nMedia dei voti = %.2f\n", somma / contatore_voti);
+    printf("\nMedia dei voti = %.2f\n", (float)somma / contatore_voti);
 
     return 0;
 }
