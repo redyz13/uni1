@@ -14,7 +14,6 @@ int restituisci_mese(int data);
 int restituisci_giorno(int data);
 
 int main() {
-    
     int data, bisestile;
     int verifica_rangee, verifica_mese_giorno30, verifica_mese_giorno31, verifica_bisestile;
 
