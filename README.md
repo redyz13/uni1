@@ -1,2 +1,2 @@
 # uni
-uni repo
+College repo
