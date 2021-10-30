@@ -3,7 +3,7 @@
 int main() {
     int n, ws, star = 1;
 
-    printf("Inserire il numero di colonne: ");
+    printf("Inserire il numero di righe: ");
     scanf("%d", &n);
 
     ws = n - 1;
