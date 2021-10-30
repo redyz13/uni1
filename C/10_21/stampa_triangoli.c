@@ -12,14 +12,10 @@ int main() {
         if(n > 1) {
             for(int i = 0; i < ws; i++)
                 printf(" ");
-
-            for(int i = 0; i < star; i++) {
-                printf("*");
-            }
         }
-        else {
-            for(int i = 0; i < star; i++)
-                printf("*");
+
+        for(int i = 0; i < star; i++) {
+            printf("*");
         }
 
         star += 2;
