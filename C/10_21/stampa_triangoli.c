@@ -1,15 +1,13 @@
 #include <stdio.h>
 
 int main() {
-    int n, ws, star = 1;
+    int n, star = 1;
 
     printf("Inserire il numero di righe: ");
     scanf("%d", &n);
 
-    ws = n - 1;
-
     while(n > 0) {
-        for(int i = 0; i < ws; i++)
+        for(int i = 0; i < n - 1; i++)
             printf(" ");
 
         for(int i = 0; i < star; i++) {
@@ -17,7 +15,6 @@ int main() {
         }
 
         star += 2;
-        ws--;
         n--;
         printf("\n");
     }
