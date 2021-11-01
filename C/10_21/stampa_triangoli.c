@@ -9,10 +9,8 @@ int main() {
     ws = n - 1;
 
     while(n > 0) {
-        if(n > 1) {
-            for(int i = 0; i < ws; i++)
-                printf(" ");
-        }
+        for(int i = 0; i < ws; i++)
+            printf(" ");
 
         for(int i = 0; i < star; i++) {
             printf("*");
