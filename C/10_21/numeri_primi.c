@@ -3,7 +3,7 @@
 int primo(int x);
 
 int main() {
-    int i = 1;
+    int i = 2;
 
     printf("[Lista numeri primi]\n\n");
 
