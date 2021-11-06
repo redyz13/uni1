@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <math.h>
 
 int main() {
-    int bnum, pos = 0;
+    int bnum, pos = 0, base = 1;
     int digit, temp_bnum;
     double dnum = 0;
 
@@ -13,9 +12,10 @@ int main() {
 
     while(temp_bnum > 0) {
         digit = temp_bnum % 10;
-        dnum += digit * (pow(2, pos));
+        dnum += digit * base;
 
         temp_bnum /= 10;
+        base *= 2;
         pos++;
     }
     
