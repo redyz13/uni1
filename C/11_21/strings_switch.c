@@ -26,6 +26,12 @@ static t_symstruct lookuptable[] = {
 */
 #define NKEYS (sizeof(lookuptable)/sizeof(t_symstruct))
 
+
+/* creo un puntatore *sym a cui do l'indirizzo di lookuptable[i]
+*  utilizzo l'operatore -> per fare riferimento a una specifica
+*  variabile della struct e faccio lo strcmp per verificare che
+*  la key inserita dell'utente sia uguale a una di quelle della struct
+*/
 int keyfromstring(char *key) {
     int i;
 
