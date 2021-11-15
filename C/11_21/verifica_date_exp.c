@@ -71,7 +71,6 @@ int verifica_data(int giorno, int mese, int anno) {
 
 
 void ciruzzo_ritornami_mese(int mese, char m_string[]) {
-    strcpy(m_string, "Ciao");
     switch(mese) {
         case 1: strcpy(m_string, "Gennaio"); break;
         case 2: strcpy(m_string, "Febbraio"); break;
