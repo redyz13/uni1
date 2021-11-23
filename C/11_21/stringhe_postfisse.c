@@ -53,6 +53,13 @@ int main() {
             counter++;
         }
 
+        /*
+         * Ferma il ciclo una volta controllati tutti i caratteri
+         * di str1
+        */ 
+        if(templen1 == 0)
+            break;
+
         templen1--;
         templen2--;
     }
