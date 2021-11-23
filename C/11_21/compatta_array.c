@@ -10,6 +10,7 @@ int get_dim(int min, int max);
 void read_array(int a[], int n);
 int compatta(int a[], int b[], int n);
 void print_array(int a[], int);
+int presente(int a[], int n, int k);
 
 int main() {
     int a[SIZE], b[SIZE];
@@ -46,7 +47,9 @@ void read_array(int arr[], int lenght) {
     }
 }
 
-int compatta(int a[], int b[], int n) {
+// Metodo brutto (refactoring in basso ~by masta5)
+
+/*int compatta(int a[], int b[], int n) {
     int i, j, temp, newsize = 0;
     int flag;
 
@@ -68,6 +71,33 @@ int compatta(int a[], int b[], int n) {
     }
 
     return newsize;
+}*/
+
+int compatta(int a[], int b[], int n) {
+    int i, j = 1;
+
+    b[0] = a[0];
+
+    for(i = 1; i < n; i++) {
+        if(!presente(b, j, a[i])) {
+            b[j] = a[i];
+            j++;
+        }
+    }
+
+    return j;
+}
+
+int presente(int a[], int n, int k) {
+    int i;
+
+    for(i = 0; i < n; i++) {
+        if(a[i] == k) {
+            return 1;
+        }
+    }
+
+    return 0;
 }
 
 void print_array(int arr[], int lenght) {
