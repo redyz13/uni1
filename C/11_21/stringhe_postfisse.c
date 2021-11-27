@@ -7,49 +7,27 @@
 #include <string.h>
 #define STRLEN 30
 
+void leggi(char str[]);
+
 int main() {
-    char str1[STRLEN];
-    char str2[STRLEN];
+    char str1[STRLEN+1];
+    char str2[STRLEN+1];
     int str1len, str2len, i, counter = 0;
-    int templen1, templen2;
 
-    /*
-     * Utilizzo di fgets per memorizzare anche
-     * stringhe contenenti spazi 
-     * fgets prevede sempre di inserire nella
-     * stringa uno \n prima del carattere nullo \0
-    */
-
-    printf("Insert the first string: ");
-    fgets(str1, STRLEN, stdin);
-    printf("Insert the second string: ");
-    fgets(str2, STRLEN, stdin);
+    leggi(str1);
+    leggi(str2);
 
     str1len = strlen(str1);
     str2len = strlen(str2);
 
-    /*
-     * Dopo aver memorizzato il numero di caratteri delle due
-     * stringhe, si sottrare -1 per escludere
-     * il carattere \n generato da fgets
-    */
-    
-    templen1 = str1len - 1; 
-    templen2 = str2len - 1; 
-
-    /*
-     * Nei cicli dovrò ancora una volta sottrarre -1
-     * alle lunghezze delle stringhe poiché sto utilizzando 
-     * quel valore per indicare le celle di un array
-    */
-    for(i = templen2 - 1; i > 0; i--) {
+    for(i = str2len - 1; i > 0; i--) {
         /*
          * Verifico che gli ultimi caratteri della seconda
          * stringa siano uguali a quelli della prima e memorizzo
          * in un contatore che dovrà poi essere uguale alla
          * lunghezza della prima stringa
         */
-        if(str2[templen2-1] == str1[templen1-1]) {
+        if(str2[str2len-1] == str1[str1len-1]) {
             counter++;
         }
 
@@ -57,18 +35,30 @@ int main() {
          * Ferma il ciclo una volta controllati tutti i caratteri
          * di str1
         */ 
-        if(templen1 == 0)
+        if(str1len == 0)
             break;
 
-        templen1--;
-        templen2--;
+        str1len--;
+        str2len--;
     }
 
 
-    if(counter == str1len - 1) // str1len -1 per escludere \n
+    if(counter == strlen(str1))
         printf("\nLa prima stringa è postfissa della seconda\n");
     else
         printf("\nLa prima stringa non è postfissa della seconda\n");
 
     return 0;
+}
+
+void leggi(char str[]) {
+    int term;
+
+    printf("Inserisci una stringa: ");
+    fgets(str, STRLEN, stdin);
+
+    term = strlen(str);
+
+    // Elimino il carattere \n aggiunto dalla fgets
+    str[term-1] = '\0';
 }
