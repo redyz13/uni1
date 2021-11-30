@@ -36,7 +36,7 @@ int count_letter(char str[], char l) {
 
     len = strlen(str);
 
-    // Controllo se è una lettera dell'alfabeto'
+    // Controllo se è una lettera dell'alfabeto
     if((l >= 'A' && l <= 'Z') || (l >= 'a'&& l <= 'z')) {
         for(i = 0; i < len; i++) {
             if(l == str[i] || l == str[i] + 'a' - 'A'
