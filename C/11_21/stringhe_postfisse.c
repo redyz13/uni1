@@ -52,13 +52,8 @@ int main() {
 }
 
 void leggi(char str[]) {
-    int term;
-
     printf("Inserisci una stringa: ");
     fgets(str, STRLEN, stdin);
 
-    term = strlen(str);
-
-    // Elimino il carattere \n aggiunto dalla fgets
-    str[term-1] = '\0';
+    str[strlen(str)-1] = '\0';
 }

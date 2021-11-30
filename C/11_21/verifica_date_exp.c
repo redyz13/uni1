@@ -9,7 +9,7 @@
 
 int verifica_data(int giorno, int mese, int anno);
 void divisione_data(int data, int *giorno, int *mese, int *anno);
-void ciruzzo_ritornami_mese(int mese, char m_string[]);
+void ritorna_mese(int mese, char m_string[]);
 
 int main() {
     int data;
@@ -22,7 +22,7 @@ int main() {
     divisione_data(data, &g, &m, &a);
 
     if(verifica_data(g, m, a) == 0) {
-        ciruzzo_ritornami_mese(m, m_string);
+        ritorna_mese(m, m_string);
 
         if(a > 9)
             printf("\nHai inserito la data: %d %s 20%d\n", g, m_string, a);
@@ -70,7 +70,7 @@ int verifica_data(int giorno, int mese, int anno) {
 }
 
 
-void ciruzzo_ritornami_mese(int mese, char m_string[]) {
+void ritorna_mese(int mese, char m_string[]) {
     switch(mese) {
         case 1: strcpy(m_string, "Gennaio"); break;
         case 2: strcpy(m_string, "Febbraio"); break;

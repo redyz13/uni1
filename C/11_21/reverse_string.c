@@ -15,14 +15,10 @@ int main() {
 }
 
 void read(char str[]) {
-    int term;
-
-    printf("Insert a string: ");
+    printf("Insert a string");
     fgets(str, STRLEN, stdin);
 
-    term = strlen(str);
-
-    str[term-1] = '\0';
+    str[strlen(str)-1] = '\0';
 }
 
 void reverse(char str[]) {
