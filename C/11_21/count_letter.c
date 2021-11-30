@@ -16,7 +16,7 @@ int main() {
 
     k = count_letter(str, l);
 
-    printf("\nRisultato : %d", k);
+    printf("\nLa lettera %c è presente %d volte", l, k);
 }
 
 void leggi(char str[]) {
@@ -36,9 +36,11 @@ int count_letter(char str[], char l) {
 
     len = strlen(str);
 
-    if(l >= 'A' && l <= 'z') {
+    // Controllo se è una lettera dell'alfabeto'
+    if((l >= 'A' && l <= 'Z') || (l >= 'a'&& l <= 'z')) {
         for(i = 0; i < len; i++) {
-            if(l == str[i] || l == str[i] + 'a' - 'A' || l == str[i] - 'a' - 'A') {
+            if(l == str[i] || l == str[i] + 'a' - 'A'
+               || l == str[i] - 'a' - 'A') {
                 k++;
             }
         }
