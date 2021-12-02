@@ -84,17 +84,3 @@ void stampa_associati(char *el[][2], char nome[]) {
         }
     }
 }
-
-char *leggi_stringa(int max_lun) {
-    char *s, *s1;
-    int lun;
-    s = (char *) malloc(max_lun + 1);
-    if(!s) return NULL;
-    leggi(s);
-    lun = strlen(s);
-    s1 = malloc(lun + 1);
-    if(!s1) return NULL;
-    strncpy(s1, s, lun);
-    free(s);
-    return s1;
-}
