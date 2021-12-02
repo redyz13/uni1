@@ -31,7 +31,7 @@ int main() {
 void leggi(char str[]) {
     int n;
     
-    fgets(str, MAX_LUN+1, stdin);
+    fgets(str, MAX_LUN+2, stdin);
 
     n = strlen(str);
 
