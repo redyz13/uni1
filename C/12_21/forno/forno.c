@@ -10,7 +10,7 @@ int main() {
     ebrei_default(ebreo, &index);
 
     do {
-        printf("Soluzione totale\n1. Elenca ebrei\n2. Censisci ebrei\n3. Metti nel forno"
+        printf("Soluzione finale\n\n1. Elenca ebrei\n2. Censisci ebrei\n3. Metti nel forno"
                "\n4. Cerca ebreo\n0. Esci\n");
         printf("\nSelezione: ");
         scanf("%d", &s);
