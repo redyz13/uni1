@@ -38,10 +38,18 @@ ebreo *censisci_ebrei(ebreo *ebreo) {
     printf("\n");
 
     ebreo->nome = malloc(strlen(nome) + 1); 
+
+    if(!ebreo->nome) return NULL;
+
     strcpy(ebreo->nome, nome);
+
     ebreo->cognome = malloc(strlen(cognome) + 1); 
+
+    if(!ebreo->cognome) return NULL;
+
     strcpy(ebreo->cognome, cognome);
     ebreo->anni = anni;
+
     ebreo->id = id;
 
     return ebreo;
