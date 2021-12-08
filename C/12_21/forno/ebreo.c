@@ -92,12 +92,15 @@ int metti_nel_forno(ebreo *ebreo[], int *index) {
 
     if(j == -1)
         return 0;
+
+    free(ebreo[j]->nome);
+    free(ebreo[j]->cognome);
+    free(ebreo[j]);
     
-    for(; j < *index; j++) {
+    for(; j < *(index) - 1; j++) {
         ebreo[j] = ebreo[j+1];
     }
 
-    free(ebreo[*index]);
     (*index)--;
 
     return 1;
