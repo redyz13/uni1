@@ -84,8 +84,15 @@ ebreo *build_ebreo(const char nome[], const char cognome[], int anni, int id) {
     e = alloca_ebreo(e);
 
     e->nome = malloc(strlen(nome) + 1); 
+
+    if(!e->nome) return NULL;
+
     strcpy(e->nome, nome);
+
     e->cognome = malloc(strlen(cognome) + 1); 
+
+    if(!e->nome) return NULL;
+
     strcpy(e->cognome, cognome);
     e->anni = anni;
     e->id = id;
