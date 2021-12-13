@@ -8,6 +8,7 @@ int primadi(char *fname, char *spartiacque, char *a[], int sizea);
 void leggi(char *str);
 void *xmalloc(size_t size);
 void riempi_stringhe(char *a[], int sizea); 
+void svuota_stringhe(char *a[], int sizea); 
 int get_dim(int min, int max);
 
 int main() {
@@ -30,6 +31,7 @@ int main() {
 
     riempi_stringhe(a, sizea);
     count = primadi(filename, spartiacque, a, sizea);
+    svuota_stringhe(a, sizea);
 
     printf("\nStringhe salvate: %d", count - 1);
     printf("\nRisulsato salvato nel file <%s>\n", filename);
@@ -109,4 +111,11 @@ int primadi(char *fname, char *spartiacque, char *a[], int sizea) {
     fclose(fp);
 
     return count;
+}
+
+void svuota_stringhe(char *a[], int sizea) {
+    int i;
+
+    for(i = 0; i < sizea; i++)
+        free(a[i]);
 }
