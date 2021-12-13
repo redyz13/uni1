@@ -13,7 +13,7 @@ int get_dim(int min, int max);
 int main() {
     char filename[MAXLUN+1];
     char spartiacque[MAXLUN+1];
-    int sizea;
+    int sizea, count;
 
     printf("Inserire il nome del file: ");
     leggi(filename);
@@ -29,8 +29,9 @@ int main() {
     while(getchar() != '\n'); // clean buffer
 
     riempi_stringhe(a, sizea);
-    primadi(filename, spartiacque, a, sizea);
+    count = primadi(filename, spartiacque, a, sizea);
 
+    printf("\nStringhe salvate: %d", count - 1);
     printf("\nRisulsato salvato nel file <%s>\n", filename);
 
     return 0;
