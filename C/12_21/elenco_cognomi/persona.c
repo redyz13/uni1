@@ -237,6 +237,12 @@ Persona **crea_elenco(Persona **lista, int index, int *cognomi) {
 
     if((*cognomi) > 0) {
         elenco_con_cognomi = realloc(elenco_con_cognomi, sizeof(Persona) * (*cognomi));
+
+        if(!elenco_con_cognomi) {
+            fprintf(stderr, "Error...byee <3\n");
+            exit(-1);
+        }
+
         return elenco_con_cognomi;
     }
 
