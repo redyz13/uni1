@@ -13,4 +13,4 @@
 ### **12/21:**
 - Introduzione di allocazione dinamica, strutture e file
 
----
+#
