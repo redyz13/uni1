@@ -7,9 +7,14 @@
 
 #define SIZE 10
 
+const char *months[12] = {
+    "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio",
+    "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre",
+    "Novembre", "Dicembre"
+};
+
 int verifica_data(int giorno, int mese, int anno);
 void divisione_data(int data, int *giorno, int *mese, int *anno);
-void ritorna_mese(int mese, char m_string[]);
 
 int main() {
     int data;
@@ -22,7 +27,7 @@ int main() {
     divisione_data(data, &g, &m, &a);
 
     if(verifica_data(g, m, a) == 0) {
-        ritorna_mese(m, m_string);
+        strcpy(m_string, months[m-1]);
 
         if(a > 9)
             printf("\nHai inserito la data: %d %s 20%d\n", g, m_string, a);
@@ -66,23 +71,5 @@ int verifica_data(int giorno, int mese, int anno) {
     }
     else {
         return 0;
-    }
-}
-
-
-void ritorna_mese(int mese, char m_string[]) {
-    switch(mese) {
-        case 1: strcpy(m_string, "Gennaio"); break;
-        case 2: strcpy(m_string, "Febbraio"); break;
-        case 3: strcpy(m_string, "Marzo"); break;
-        case 4: strcpy(m_string, "Aprile"); break;
-        case 5: strcpy(m_string, "Maggio"); break;
-        case 6: strcpy(m_string, "Giugno"); break;
-        case 7: strcpy(m_string, "Luglio"); break;
-        case 8: strcpy(m_string, "Agosto"); break;
-        case 9: strcpy(m_string, "Settembre"); break;
-        case 10: strcpy(m_string, "Ottobre"); break;
-        case 11: strcpy(m_string, "Novembre"); break;
-        case 12: strcpy(m_string, "Dicembre");
     }
 }
