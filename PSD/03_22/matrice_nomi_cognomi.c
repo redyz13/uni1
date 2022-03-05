@@ -85,23 +85,21 @@ char *leggi_stringa(int buff) {
 }
 
 char minimo(const char *s) {
-    const char *t = s;
-    char min = t[0];
-    int i = 1;
+    char min = s[0];
 
-    while(*t) {
-        if(min > *t) {
-            min = *t;
+    while(*s) {
+        if(min > *s) {
+            min = *s;
         }
 
-        t++;
+        s++;
     }
 
     return min;
 }
 
 void inserisci_stringa(char **matrice, char *s, int *pos) {
-    int lun = strlen(s);
+    //int lun = strlen(s);
 
     //matrice[*pos] = malloc(lun + 1);
     matrice[*pos] = malloc(sizeof(char *));
