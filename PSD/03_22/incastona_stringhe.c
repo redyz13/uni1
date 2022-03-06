@@ -82,15 +82,24 @@ char *merge(const char *s1, const char *s2) {
     char *p;
     char *pi;
 
+    // Alloco una dimensione sufficiente per concatenare le stringhe
     p = malloc(strlen(s1) + strlen(s2) + 1);
 
+    // Utilizzo un altro puntatore per mantenere intatto l'indirizzo di base
     pi = p;
 
     strcpy(p, s1);
 
+    // Scorro la stringa fino a trovare il carattere terminatore
     while(*pi)
         pi++;
 
+    /* Inizio a copiare i caratteri dal terminatore della prima stringa
+    *  fino all'ultimo carattere della seconda
+    *  I due puntatori vengono incrementati dopo l'assegnamento e la condizione
+    *  del while è il risultato dell'assegnamento stesso, che sarà '\0 (quindi 0)
+    *  quando avrà trovato il terminatore della seconda stringa, uscendo dal while
+    */
     while((*pi++ = *s2++))
         ;
 
