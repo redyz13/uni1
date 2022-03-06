@@ -19,6 +19,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define getchar() getc(stdin)
+
 char *leggi_stringa(int buff); 
 char minimo(const char *s);
 void inserisci_stringa(char **matrice, char *s, int *pos);
@@ -65,13 +67,17 @@ char *leggi_stringa(int buff) {
     char *s;
     char tmp[buff];
     int lun;
+    int ch, i = 0;
 
-    fgets(tmp, buff + 1, stdin);
+    while((ch = getchar()) != '\n') {
+        if(i < buff) {
+            tmp[i++] = ch;
+        }
+    }
+
+    tmp[i] = '\0';
 
     lun = strlen(tmp);
-
-    if(tmp[lun-1] == '\n')
-        tmp[lun-1] = '\0';
 
     s = malloc(lun + 1);
 
