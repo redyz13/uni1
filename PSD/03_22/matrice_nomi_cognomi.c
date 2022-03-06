@@ -65,7 +65,7 @@ int main(void) {
 
 char *leggi_stringa(int buff) {
     char *s;
-    char tmp[buff];
+    char tmp[buff+1];
     int lun;
     int ch, i = 0;
 
