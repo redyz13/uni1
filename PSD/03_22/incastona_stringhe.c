@@ -1,25 +1,10 @@
-/* Creare una funzione char *merge(char *, char *) che prende in
- * input il nome e il cognome e produca una nuova stringa che è il
- * risultato della concatenazione delle due date in input
- *
- * Una funzione char *incastona(char *, char *) che produce una nuova
+/* Creare una funzione char *incastona(char *, char *) che produce una nuova
  * stringa secondo la seguente regola: la più piccola delle due va
  * incastonata nella più lunga sostituendo i caratteri di questa ultima
  * Esempio: a = "fabio" b = "narducci" restituirà in output la stringa
  * c = "nfabioci" (nota. quando la stringa più lunga ha un numero pari di
  * caratteri, la stringa più corta viene incastonata al centro a meno di un
  * carattere a sx o dx)
- *
- * Una funzione void ordina(char *) che ordini i caratteri del nome e del
- * cognome con un algoritmo a scelta tra InsertionSort o BubbleSort
- *
- * Note:
- *
- * Dal momento che non è nota a priori la dimensione dell'array, è opportuno
- * gestire l'allocazione dell'array in maniera dinamica
- *
- * Convertire e gestire opportunatamente i due diversi tipi di dato char e
- * int e relativi puntatori
 */
 
 #include <stdio.h>
@@ -29,11 +14,11 @@
 #define getchar() getc(stdin)
 
 char *leggi_stringa(int buff); 
-char *merge(const char *s1, const char *s2);
+char *incastona(char *s1, char *s2);
 
 int main(void) {
     char *nome, *cognome;
-    char *concat;
+    char *incast;
 
     printf("Inserire il proprio nome: ");
     nome = leggi_stringa(25);
@@ -44,9 +29,9 @@ int main(void) {
     printf("\nNome inserito: %s", nome);
     printf("\nCognome inserito: %s", cognome);
 
-    concat = merge(nome, cognome);
+    incast = incastona(nome, cognome);
 
-    printf("\nConcatenazione di nome e cognome: %s", concat);
+    printf("\nStringa incastonata: %s", incast);
 
     return 0;
 }
@@ -78,30 +63,60 @@ char *leggi_stringa(int buff) {
     return s;
 }
 
-char *merge(const char *s1, const char *s2) {
-    char *p;
-    char *pi;
+void copia_stringa(char *s1, const char *s2) {
+    char *pi = s1;
 
-    // Alloco una dimensione sufficiente per concatenare le stringhe
-    p = malloc(strlen(s1) + strlen(s2) + 1);
+    while(*s2) {
+        *pi++ = *s2++;
+    }
 
-    // Utilizzo un altro puntatore per mantenere intatto l'indirizzo di base
-    pi = p;
+    // Terminatore non necessario in quest'implementazione
+    // *pi = '\0';
+}
 
-    strcpy(p, s1);
+char *incastona(char *s1, char *s2) {
+    char *incast;
+    int lun1, lun2;
 
-    // Scorro la stringa fino a trovare il carattere terminatore
-    while(*pi)
-        pi++;
+    lun1 = strlen(s1);
+    lun2 = strlen(s2);
 
-    /* Inizio a copiare i caratteri dal terminatore della prima stringa
-    *  fino all'ultimo carattere della seconda
-    *  I due puntatori vengono incrementati dopo l'assegnamento e la condizione
-    *  del while è il risultato dell'assegnamento stesso, che sarà '\0 (quindi 0)
-    *  quando avrà trovato il terminatore della seconda stringa, uscendo dal while
-    */
-    while((*pi++ = *s2++))
-        ;
+    if(lun1 > lun2) {
+        incast = malloc(lun1 + 1);
 
-    return p;
+        copia_stringa(incast, s1);
+
+        // Aggiunta del terminatore
+        incast[lun1] = '\0';
+
+        if(lun1 % 2 == 0) {
+            // Passo al carattere successivo per l'incastonamento
+            // con cifre pari (incast + 1) e incastono la stringa
+            // corta nella stringa lunga
+            copia_stringa(incast+1, s2);
+
+            // Il terminatore è già presente, perché copiato dalla stringa lunga
+        }
+        else {
+            // Incastono la stringa corta a partire dal primo carattere
+            // nella stringa lunga
+            copia_stringa(incast, s2);
+        }
+    }
+    else if(lun2 > lun1){
+        incast = malloc(lun2 + 1);
+
+        copia_stringa(incast, s2);
+
+        incast[lun2] = '\0';
+
+        if(lun2 % 2 == 0) {
+            copia_stringa(incast+1, s1);
+        }
+        else {
+            copia_stringa(incast, s1);
+        }
+    }
+
+    return incast;
 }
