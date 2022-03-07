@@ -31,11 +31,7 @@ int main(void) {
     char mn, mc;
     char *minimi;
     int i = 0;
-    char **matrice = malloc(2);
-
-    if(!matrice) {
-        exit(-1);
-    }
+    char *matrice[2];
 
     printf("Inserire il proprio nome: ");
     nome = leggi_stringa(25);
@@ -105,16 +101,6 @@ char minimo(const char *s) {
 }
 
 void inserisci_stringa(char **matrice, char *s, int *pos) {
-    //int lun = strlen(s);
-
-    //matrice[*pos] = malloc(lun + 1);
-    matrice[*pos] = malloc(sizeof(char *));
-
-    if(!matrice[*pos]) {
-        exit(-1);
-    }
-
-    //strcpy(matrice[*pos], s);
     matrice[*pos] = s;
 
     (*pos)++;
