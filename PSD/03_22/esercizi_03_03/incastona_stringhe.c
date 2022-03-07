@@ -76,7 +76,7 @@ void copia_stringa(char *s1, const char *s2) {
 }
 
 char *incastona(char *s1, char *s2) {
-    char *incast;
+    char *incast = NULL;
     int lun1, lun2;
 
     lun1 = strlen(s1);
