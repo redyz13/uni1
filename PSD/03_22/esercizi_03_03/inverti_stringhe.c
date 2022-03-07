@@ -89,6 +89,8 @@ void inverti(char **matrice) {
     char tmp[strlen(matrice[0] + 1)];
 
     copia_stringa(tmp, matrice[0]);
+    matrice[0] = realloc(matrice[0], strlen(matrice[1]) + 1);
     copia_stringa(matrice[0], matrice[1]);
+    matrice[1] = realloc(matrice[1], strlen(tmp) + 1);
     copia_stringa(matrice[1], tmp);
 }
