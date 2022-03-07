@@ -85,6 +85,10 @@ char *incastona(char *s1, char *s2) {
     if(lun1 > lun2) {
         incast = malloc(lun1 + 1);
 
+        if(!incast) {
+            return NULL;
+        }
+
         copia_stringa(incast, s1);
 
         // Aggiunta del terminatore
@@ -106,6 +110,10 @@ char *incastona(char *s1, char *s2) {
     }
     else if(lun2 > lun1){
         incast = malloc(lun2 + 1);
+
+        if(!incast) {
+            return NULL;
+        }
 
         copia_stringa(incast, s2);
 

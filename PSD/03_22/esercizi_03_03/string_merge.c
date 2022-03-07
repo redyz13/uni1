@@ -88,6 +88,10 @@ char *merge(const char *s1, const char *s2) {
     // Alloco una dimensione sufficiente per concatenare le stringhe
     p = malloc(strlen(s1) + strlen(s2) + 1);
 
+    if(!p) {
+        return NULL;
+    }
+
     // Utilizzo un altro puntatore per mantenere intatto l'indirizzo di base
     pi = p;
 
