@@ -1,6 +1,6 @@
 /* Creare una funzione void ordina(char *) che ordini
  * i caratteri del nome e del cognome con l'algoritmo
- * di ordinamento BubbleSort
+ * di ordinamento InsertionSort 
 */
 
 #include <stdio.h>
@@ -11,7 +11,7 @@
 
 char *leggi_stringa(int buff); 
 void copia_stringa(char *s1, const char *s2);
-// Bubble sort
+// Insertion sort
 void ordina(char *s1);
 
 int main(void) {
@@ -72,20 +72,22 @@ void copia_stringa(char *s1, const char *s2) {
     *pi = '\0';
 }
 
-// Bubble sort
+// Insertion sort
 void ordina(char *s1) {
     int i, j, lenght;
-    int tmp;
+    int key;
 
     lenght = strlen(s1);
 
-    for(i = 0; i < lenght; i++) {
-        for(j = 0; j < (lenght - 1 - i); j++) {
-            if(s1[j] > s1[j+1]) {
-                tmp = s1[j];
-                s1[j] = s1[j+1];
-                s1[j+1] = tmp;
-            }
+    for(i = 1; i < lenght; i++) {
+        key = s1[i];
+        j = i - 1;
+
+        while(j >= 0 && s1[j] > key) {
+            s1[j+1] = s1[j];
+            j--;
         }
+
+        s1[j+1] = key;
     }
 }
