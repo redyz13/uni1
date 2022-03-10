@@ -104,9 +104,6 @@ char *merge(const char *s1, const char *s2) {
 
     /* Inizio a copiare i caratteri dal terminatore della prima stringa
     *  fino all'ultimo carattere della seconda
-    *  I due puntatori vengono incrementati dopo l'assegnamento e la condizione
-    *  del while è il risultato dell'assegnamento stesso, che sarà '\0 (quindi 0)
-    *  quando avrà trovato il terminatore della seconda stringa, uscendo dal while
     */
     copia_stringa(pi, s2);
 
