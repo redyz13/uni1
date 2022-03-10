@@ -104,12 +104,13 @@ void crea(char **matrice, int *pos) {
     while(*pi)
         pi++;
 
-    // Copia degli ultimi tre caratteri del cognome
     lun = strlen(matrice[1]);
 
     // Sommo la lunghezza della stringa per scorrere il puntatore 
     // alla fine della stringa e sottraggo 3 per lasciare gli ultimi
     // tre caratteri da copiare
+
+    // Copia degli ultimi tre caratteri del cognome
     copia_stringa(pi, (matrice[1] + lun - 3), 3);
 
     inserisci_stringa(matrice, nuova_stringa, pos);
