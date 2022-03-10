@@ -94,19 +94,9 @@ char *incastona(char *s1, char *s2) {
         // Aggiunta del terminatore
         incast[lun1] = '\0';
 
-        if(lun1 % 2 == 0) {
-            // Passo al carattere successivo per l'incastonamento
-            // con cifre pari (incast + 1) e incastono la stringa
-            // corta nella stringa lunga
-            copia_stringa(incast+1, s2);
+        copia_stringa(incast + ((lun1 - lun2) / 2), s2);
 
-            // Il terminatore è già presente, perché copiato dalla stringa lunga
-        }
-        else {
-            // Incastono la stringa corta a partire dal primo carattere
-            // nella stringa lunga
-            copia_stringa(incast, s2);
-        }
+        // Il terminatore è già presente, perché copiato dalla stringa lunga
     }
     else if(lun2 > lun1){
         incast = malloc(lun2 + 1);
@@ -119,12 +109,7 @@ char *incastona(char *s1, char *s2) {
 
         incast[lun2] = '\0';
 
-        if(lun2 % 2 == 0) {
-            copia_stringa(incast+1, s1);
-        }
-        else {
-            copia_stringa(incast, s1);
-        }
+        copia_stringa(incast + ((lun2 - lun1) / 2), s1);
     }
 
     return incast;
