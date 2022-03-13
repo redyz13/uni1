@@ -8,9 +8,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define getchar() getc(stdin)
-
-char *leggi_stringa(int buff); 
 void copia_stringa(char *s1, const char *s2);
 char *merge(const char *s1, const char *s2);
 
@@ -18,15 +15,15 @@ int main(int argc, char **argv) {
     char *concat;
 
     if(argc < 3) {
-        printf("Utilizzo: <%s nome cognome>\n", argv[0]);
+        printf("Utilizzo: <%s stringa1 stringa2>\n", argv[0]);
     }
     else {
-        printf("Nome inserito: %s", argv[1]);
-        printf("\nCognome inserito: %s", argv[2]);
+        printf("Stringa 1: %s", argv[1]);
+        printf("\nStringa 2: %s", argv[2]);
 
         concat = merge(argv[1], argv[2]);
 
-        printf("\nConcatenazione di nome e cognome: %s", concat);
+        printf("\nConcatenazione delle due stringhe: %s", concat);
     }
 
     return 0;

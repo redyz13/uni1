@@ -9,8 +9,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define getchar() getc(stdin)
-
 // Bubble sort
 void ordina(int *a, int lenght);
 int *crea_array(int argc, char **argv);
