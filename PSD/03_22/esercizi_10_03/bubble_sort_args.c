@@ -51,7 +51,7 @@ int *crea_array(int argc, char **argv) {
     array = malloc(sizeof(int) * (argc - 1));
 
     if(!array) {
-        return NULL;
+        exit(-1);
     }
 
     for(i = 0; i < argc - 1; i++) {

@@ -49,7 +49,7 @@ char *merge(const char *s1, const char *s2) {
     p = malloc(strlen(s1) + strlen(s2) + 1);
 
     if(!p) {
-        return NULL;
+        exit(-1);
     }
 
     pi = p;
