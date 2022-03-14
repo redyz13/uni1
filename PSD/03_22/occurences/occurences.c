@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int confronta_lettere(const char *sub_string, const char *string);
+int confronta_stringhe(const char *sub_string, const char *string);
 int conta_occorenze(FILE *fp, const char *s);
 
 int main(int argc, char **argv) {
@@ -42,26 +42,14 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-int confronta_lettere(const char *sub_string, const char *string) {
-    int s_len, sub_len;
-    int i, j;
-
-    sub_len = strlen(sub_string);
-    s_len = strlen(string);
-
-    for(i = 0; i <= s_len - sub_len; i++) {
-        for(j = 0; j < sub_len; j++) {
-            if(sub_string[j] != string[i+j]) {
-                break;
-            }
-        }
-
-        if(j == sub_len) {
-            return 1;
+int confronta_stringhe(const char *sub_string, const char *string) {
+    while(*string) {
+        if(*sub_string++ != *string++) {
+            return 0;
         }
     }
 
-    return 0; 
+    return 1;
 }
 
 int conta_occorenze(FILE *fp, const char *s) {
@@ -80,7 +68,7 @@ int conta_occorenze(FILE *fp, const char *s) {
 
         tmp[i] = '\0';
 
-        if(confronta_lettere(s, tmp)) {
+        if(confronta_stringhe(s, tmp)) {
             count++;
         }
 
