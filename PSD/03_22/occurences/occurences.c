@@ -13,8 +13,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BUFREAD 50
-
 int confronta_lettere(const char *sub_string, const char *string);
 int conta_occorenze(FILE *fp, const char *s);
 
