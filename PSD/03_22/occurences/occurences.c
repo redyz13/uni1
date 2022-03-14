@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
 
         fclose(fp);
 
-        printf("La parola è presente %d volte/a "
+        printf("La stringa è presente %d volte/a "
                "all'interno del file\n", occorenze);
     }
 
@@ -68,13 +68,13 @@ int confronta_lettere(const char *sub_string, const char *string) {
 
 int conta_occorenze(FILE *fp, const char *s) {
     int i, count = 0, lun = 0;
-    int ch = 1;
+    int ch;
 
     lun = strlen(s);
 
     char tmp[lun+1];
 
-    while(ch != EOF) {
+    do {
         for(i = 0; i < lun; i++) {
             ch = fgetc(fp);
             tmp[i] = ch;
@@ -87,7 +87,7 @@ int conta_occorenze(FILE *fp, const char *s) {
         }
 
         fseek(fp, (-lun + 1), SEEK_CUR);
-    }
+    } while(ch != EOF);
 
     return count;
 }
