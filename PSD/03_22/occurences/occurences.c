@@ -68,25 +68,25 @@ int confronta_lettere(const char *sub_string, const char *string) {
 
 int conta_occorenze(FILE *fp, const char *s) {
     int i, count = 0, lun = 0;
+    int ch = 1;
 
     lun = strlen(s);
 
     char tmp[lun+1];
 
-    while(!feof(fp)) {
+    while(ch != EOF) {
         for(i = 0; i < lun; i++) {
-            tmp[i] = fgetc(fp);
+            ch = fgetc(fp);
+            tmp[i] = ch;
         }
 
         tmp[i] = '\0';
-
-        printf("%s\n", tmp);
 
         if(confronta_lettere(s, tmp)) {
             count++;
         }
 
-        fseek(fp, lun - 1, SEEK_CUR);
+        fseek(fp, (-lun + 1), SEEK_CUR);
     }
 
     return count;
