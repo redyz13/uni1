@@ -2,8 +2,7 @@
 
 /* commenti relativi alla progettazione 
 e realizzazione della funzione scambia */
-void scambia(int * x, int * y)
-{	
+void scambia(int *x, int *y) {	
     int tmp;
 
     tmp = *x;

@@ -1,11 +1,11 @@
-// FILE:   vettore.c
+// FILE: vettore.c
 // restituisce 1 se i due vettori di ingresso sono uguali, 0 altrimenti
 
 #include "vettore.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-int confronta_array(int a[], int b[], int n){
+int confronta_array(int a[], int b[], int n) {
     int i;
 
     for(i = 0; i < n; i++){
@@ -17,8 +17,7 @@ int confronta_array(int a[], int b[], int n){
     return 1;
 }
 
-void foutput_array(char *file_name, int a[], int n) 
-{  
+void foutput_array(char *file_name, int a[], int n) {  
 	int i;  
 	FILE *fd; 	
 
@@ -38,8 +37,7 @@ void foutput_array(char *file_name, int a[], int n)
     fclose(fd);
 }
 
-void finput_array(char *file_name, int a[], int n)
-{
+void finput_array(char *file_name, int a[], int n) {
 	int i;
 	FILE *fd;
 
@@ -47,7 +45,7 @@ void finput_array(char *file_name, int a[], int n)
 	fd = fopen(file_name, "r");
 	
 	//Controllare se il file esiste e
-    if (!fd){
+    if (!fd) {
         fprintf(stderr, "Apertura del file non riuscita\n");
         exit(-1);
     }
@@ -60,17 +58,15 @@ void finput_array(char *file_name, int a[], int n)
 	fclose(fd);
 }
 
-void ordina(int a[], int n){
+void ordina(int a[], int n) {
     int i, j;
     int temp; 
 
-    for(i = 0; i < n; i++){
-        for(j = 0; j < (n - 1 - i); j++){
-            if (a[j] > a[j+1]){
+    for(i = 0; i < n; i++) {
+        for(j = 0; j < (n - 1 - i); j++) {
+            if(a[j] > a[j+1]) {
                 scambia(&a[j], &a[j+1]);
             }
         }
     }
 }
-   
-

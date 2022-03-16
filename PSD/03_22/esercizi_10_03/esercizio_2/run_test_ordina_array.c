@@ -1,19 +1,19 @@
 // file run_test_ordina_array.c
 
-# include <stdio.h>
-# include <stdlib.h>
-# include "vettore.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "vettore.h"
 
-# define M 20
+#define M 20
 
 int run_test_case(char *tc_id, int n);
 
-int main(int argc, char *argv[]){    
+int main(int argc, char *argv[]) {    
     FILE *test_suite, *result;  
     char tc_id[M];  // stringa contenente l'identificativo del test case
     int n, pass;
     
-    if(argc < 3){
+    if(argc < 3) {
          printf("Nomi dei file mancanti \n");
          exit(1);
     }    
@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
     l'identificativo del test case tc_id e il numero n di elementi
     da ordinare */
     
-    while(fscanf(test_suite, "%s%d", tc_id, &n) == 2){
+    while(fscanf(test_suite, "%s%d", tc_id, &n) == 2) {
          pass = run_test_case(tc_id, n);
     
          fprintf(result,"%s ", tc_id);
@@ -39,18 +39,18 @@ int main(int argc, char *argv[]){
                fprintf(result, "PASS \n");
          else   
                fprintf(result, "FAIL \n");			
-         }	
+         }
     
     fclose(test_suite);  // chiusura file di input
     fclose(result);         // chiusura file di output
 }
 
-int run_test_case(char *tc_id, int n){
+int run_test_case(char *tc_id, int n) {
     char input_fname[M], output_fname[M], oracle_fname[M];	
     int *input, *oracle;
     // costruiamo i nomi dei file
 
-    switch(tc_id[2]){
+    switch(tc_id[2]) {
         case '1':
             strcpy(input_fname, "TC1_input.txt");
             strcpy(oracle_fname, "TC1_oracle.txt");
@@ -89,7 +89,7 @@ int run_test_case(char *tc_id, int n){
     // allochiamo memoria per array oracolo
     oracle = malloc(sizeof(int) * n);
     
-    if(!oracle){
+    if(!oracle) {
         exit(-1);
     }
 
