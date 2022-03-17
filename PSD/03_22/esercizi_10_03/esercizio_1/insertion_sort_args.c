@@ -11,7 +11,7 @@
 
 // Insertion sort
 void ordina(int *a, int lenght);
-int *crea_array(int argc, char **argv);
+int *crea_array(int n, char **numeri);
 
 int main(int argc, char **argv) {
     int *array, i;
@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
         printf("Utilizzo: <%s numero1 numero2 ...>\n", argv[0]);
     }
     else {
-        array = crea_array(argc, argv);
+        array = crea_array(argc - 1, argv + 1);
 
         printf("Numeri inseriti:\n");
 
@@ -42,18 +42,18 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-int *crea_array(int argc, char **argv) {
+int *crea_array(int n, char **numeri) {
     int *array;
     int i;
 
-    array = malloc(sizeof(int) * (argc - 1));
+    array = malloc(sizeof(int) * n); 
 
     if(!array) {
         exit(-1);
     }
 
-    for(i = 0; i < argc - 1; i++) {
-        array[i] = atoi(argv[i+1]);
+    for(i = 0; i < n; i++) {
+        array[i] = atoi(numeri[i]);
     }
 
     return array;
