@@ -1,39 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
+#include "item.h"
 
 struct Node {
-    int value;
+    item data;
     struct Node *next;
 };
 
-Node newNode(int x) {
+Node newNode(item x) {
     Node node;
 
     node = malloc(sizeof(struct Node));
 
     if(node == NULL) return NULL;
 
-    node->value = x;
+    node->data= x;
     node->next = NULL;
 
     return node;
 }
 
 int getValue(Node n) {
-    return n->value;
+    return n->data;
 }
 
 void printList(Node head) {
     int i = 0;
 
     while(head != NULL) {
-        printf("Element %d = %d\n", i++, head->value);
+        printf("Element %d = ", i++);
+        printItem(head->data);
+        putchar('\n');
         head = head->next;
     }
 }
 
-void addEnd(Node *head, int x) {
+int countNodes(Node head) {
+    int i = 1;
+
+    if(head == NULL) {
+        return i;
+    }
+
+    while(head->next != NULL) {
+        head = head->next;
+        i++;
+    }
+
+    return i;
+}
+
+void addEnd(Node *head, item x) {
     Node new, last;
 
     new = newNode(x);
@@ -54,10 +72,15 @@ void addEnd(Node *head, int x) {
     }
 }
 
-void addFront(Node *head, int x) {
+void addFront(Node *head, item x) {
     Node new;
 
     new = newNode(x);
+
+    if(*head == NULL) {
+        *head = new;
+        return;
+    }
 
     if(new != NULL) {
         new->next = *head;
