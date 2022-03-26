@@ -87,3 +87,13 @@ void addFront(Node *head, item x) {
         *head = new;
     }
 }
+
+void freeList(Node head) {
+    Node tmp;
+
+    while(head != NULL) {
+        tmp = head;
+        head = head->next;
+        free(tmp);
+    }
+}

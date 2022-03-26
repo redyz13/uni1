@@ -8,3 +8,4 @@ void printList(Node head);
 void addEnd(Node *head, item x);
 void addFront(Node *head, item x);
 int countNodes(Node head);
+void freeList(Node head);
