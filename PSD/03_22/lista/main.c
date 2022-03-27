@@ -5,11 +5,14 @@
 int main(void) {
     Node head = NULL;
 
-    addFront(&head, 1);
-    addEnd(&head, 10);
-    addEnd(&head, 20);
-    addFront(&head, 20);
+    for(int i = 0; i < 10; i++) {
+        addFront(&head, i);
+    }
 
+    removeNode(&head, 5);
+    removeNode(&head, 88);
+    reverseList(&head);
+    printList(head);
     freeList(head);
 
     return 0;
