@@ -144,6 +144,39 @@ void removeNode(Node *head, item x) {
     }
 }
 
+void removeNodePos(Node *head, int pos) {
+    Node tmp, previous;
+    int i = 0;
+
+    tmp = *head;
+
+    /* If the pos is 0, set head to next node
+    *  and free the previous head
+    */
+    if(pos == 0) {
+        *head = (*head)->next;
+        free(tmp);
+        return;
+    }
+
+    // Traverse until the given pos is found or you reach the end of the list 
+    while(i < pos && tmp->next != NULL) {
+        // Take trace of the node before the one to delete
+        previous = tmp;
+        tmp = tmp->next;
+        i++;
+    }
+
+    /* If the pos is found set the next pointer of the previous node
+    *  to the next node of the node to delete
+    */
+    if(i == pos) {
+        previous->next = tmp->next;
+        // Free the node
+        free(tmp);
+    }
+}
+
 void reverseList(Node *head) {
     Node prev = NULL;
     Node current = *head;
