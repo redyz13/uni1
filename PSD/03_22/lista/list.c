@@ -102,6 +102,50 @@ void addFront(Node *head, item x) {
     }
 }
 
+void addPos(Node *head, item x, int pos) {
+    Node tmp, new;
+    int i = 0;
+    // Calculate the number of nodes
+    int n = countNodes(*head) - 1;
+
+    tmp = *head;
+
+    if(pos == n + 1) {
+        addEnd(head, x);
+        return;
+    }
+
+    // Check if pos is less than the total number of nodes
+    if(pos < n) {
+        // Allocate the new node
+        new = newNode(x);
+
+        if(new != NULL) {
+            // If the pos is 0, set the created one as head 
+            if(pos == 0) {
+                *head = new;
+                new->next = tmp;
+                return;
+            }
+
+
+            // Traverse until the given pos - 1 is found or you reach the end of the list 
+            while(i < pos - 1 && tmp->next != NULL) {
+                tmp = tmp->next;
+                i++;
+            }
+
+            /* If the pos - 1 is found set the new node at the given pos
+            *  and its next node to the current one that was at the pos
+            */
+            if(i == pos - 1) {
+                new->next = tmp->next;
+                tmp->next = new;
+            }
+        }
+    }
+}
+
 void freeList(Node head) {
     Node tmp;
 
@@ -185,10 +229,10 @@ void reverseList(Node *head) {
     while(current != NULL) {
         // Store next
         next = current->next;
- 
+
         // Reverse current node's pointer
         current->next = prev;
- 
+
         // Move pointers one position ahead.
         prev = current;
         current = next;

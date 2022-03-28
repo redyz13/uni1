@@ -17,6 +17,8 @@ void addEnd(Node *head, item x);
 // Add a node to the front
 void addFront(Node *head, item x);
 
+void addPos(Node *head, item x, int pos);
+
 // Get the number of nodes
 int countNodes(Node head);
 

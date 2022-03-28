@@ -15,7 +15,9 @@ int main(void) {
     removeNodePos(&head, 0);
     removeNodePos(&head, 0);
     removeNodePos(&head, 5);
-    removeNodePos(&head, 2);
+    removeNodePos(&head, 5);
+    addPos(&head, 22, 0);
+    addPos(&head, 122, 6);
     printList(head);
     freeList(head);
 
