@@ -11,12 +11,21 @@ item getData(Node n);
 // Print the entire list
 void printList(Node head);
 
-// Add a node to the end
+/* Add a node to the end, if there are
+*  no nodes, set the created one as head 
+*/
 void addEnd(Node *head, item x);
 
-// Add a node to the front
+/* Add a node to the front, if there are
+*  no nodes, set the created one as head 
+*/
 void addFront(Node *head, item x);
 
+/* Add the node at the given position
+*  in the list, if the pos is the last, just
+*  add the node to the end, if the pos is 0, set the
+*  created one as head
+*/
 void addPos(Node *head, item x, int pos);
 
 // Get the number of nodes

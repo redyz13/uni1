@@ -104,13 +104,15 @@ void addFront(Node *head, item x) {
 
 void addPos(Node *head, item x, int pos) {
     Node tmp, new;
-    int i = 0;
+    int i = 0, n;
+
     // Calculate the number of nodes
-    int n = countNodes(*head) - 1;
+    n = countNodes(*head) - 1;
 
     tmp = *head;
 
-    if(pos == n + 1) {
+    // If the pos is the last, just add to the end
+    if(pos == n + 1 || pos == n) {
         addEnd(head, x);
         return;
     }
@@ -127,7 +129,6 @@ void addPos(Node *head, item x, int pos) {
                 new->next = tmp;
                 return;
             }
-
 
             // Traverse until the given pos - 1 is found or you reach the end of the list 
             while(i < pos - 1 && tmp->next != NULL) {
