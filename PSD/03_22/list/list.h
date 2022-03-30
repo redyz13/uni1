@@ -42,7 +42,7 @@ void removeNode(Node *head, item x);
 /* Remove the the node that has the
 *  given position in the list
 */
-void removeNodePos(Node *head, int pos);
+void removePos(Node *head, int pos);
 
 // Reverse the entire list
 void reverseList(Node *head);

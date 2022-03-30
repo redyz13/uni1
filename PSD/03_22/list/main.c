@@ -12,10 +12,10 @@ int main(void) {
     removeNode(&head, 5);
     removeNode(&head, 88);
     reverseList(&head);
-    removeNodePos(&head, 0);
-    removeNodePos(&head, 0);
-    removeNodePos(&head, 5);
-    removeNodePos(&head, 5);
+    removePos(&head, 0);
+    removePos(&head, 0);
+    removePos(&head, 5);
+    removePos(&head, 5);
     addPos(&head, 22, 0);
     addPos(&head, 42, 0);
     addPos(&head, 62, 1);

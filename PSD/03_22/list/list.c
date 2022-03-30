@@ -189,7 +189,7 @@ void removeNode(Node *head, item x) {
     }
 }
 
-void removeNodePos(Node *head, int pos) {
+void removePos(Node *head, int pos) {
     Node tmp, previous;
     int i = 0;
 
