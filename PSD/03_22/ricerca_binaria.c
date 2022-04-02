@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int ricerca_binaria(int arr[], int inf, int sup, int x);;
+int ricerca_binaria(int arr[], int inf, int sup, int x);
   
 int main(void) {
     int arr[] = {2, 3, 4, 10, 40};
