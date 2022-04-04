@@ -3,19 +3,35 @@
 #include "list.h"
 #include "item.h"
 
+struct List {
+    struct Node *head;
+    int count;
+};
+
 struct Node {
     item data;
     struct Node *next;
 };
+
+List newList(void) {
+    List l;
+
+    l = malloc(sizeof(struct List));
+
+    if(l != NULL) {
+        l->head = NULL;
+        l->count = 0;
+    }
+
+    return l;
+}
 
 Node newNode(item x) {
     Node node;
 
     node = malloc(sizeof(struct Node));
 
-    if(node == NULL) {
-        return NULL;
-    }
+    if(node == NULL) return NULL;
 
     // Set the next pointer to NULL and give the data to the node
     node->data = x;
@@ -28,15 +44,15 @@ item getData(Node n) {
     return n->data;
 }
 
-void printList(Node head) {
-    int i = 0;
+void printList(List l) {
+    int i;
 
     // Traverse through nodes and print data of each node
-    while(head != NULL) {
-        printf("Element %d = ", i++);
-        printItem(head->data);
+    for(i = 0; i < l->count; i++) {
+        printf("Element %d = ", i);
+        printItem(l->head->data);
         putchar('\n');
-        head = head->next;
+        l->head = l->head->next;
     }
 }
 
@@ -57,17 +73,17 @@ int countNodes(Node head) {
     return i;
 }
 
-void addEnd(Node *head, item x) {
+void addEnd(List l, item x) {
     Node new, last;
 
     new = newNode(x);
 
-    last = *head;
+    last = l->head;
 
     if(new != NULL) {
         // If there are no nodes, set the created one as head 
-        if(*head == NULL) {
-            *head = new;
+        if(l->head == NULL) {
+            l->head = new;
             return;
         }
 
@@ -85,23 +101,26 @@ void addEnd(Node *head, item x) {
     }
 }
 
-void addFront(Node *head, item x) {
+void addFront(List l, item x) {
     Node new;
 
     new = newNode(x);
 
     // If there are no nodes, set the created one as head 
-    if(*head == NULL) {
-        *head = new;
+    if(l->head == NULL) {
+        l->head = new;
+        l->count++;
         return;
     }
 
     if(new != NULL) {
         // Make the next of the new node as head
-        new->next = *head;
+        new->next = l->head;
         // Move the head to point to the new node
-        *head = new;
+        l->head = new;
     }
+
+    l->count++;
 }
 
 void addPos(Node *head, item x, int pos) {
@@ -149,15 +168,23 @@ void addPos(Node *head, item x, int pos) {
     }
 }
 
-void freeList(Node head) {
+void freeList(List l) {
     Node tmp;
+    int i;
 
     // Travers through nodes and free each node
-    while(head != NULL) {
-        tmp = head;
-        head = head->next;
+    // for(i = 0; i < l->count; i++) {
+    //     tmp = l->head;
+    //     l->head = l->head->next;
+    //     free(tmp);
+    // }
+    while(l->head != NULL) {
+        tmp = l->head;
+        l->head = l->head->next;
         free(tmp);
     }
+
+    free(l);
 }
 
 void removeNode(Node *head, item x) {

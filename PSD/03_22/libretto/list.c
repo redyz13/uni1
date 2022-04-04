@@ -1,44 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-#include "item.h"
+#include "libretto.h"
 
 struct Node {
-    item data;
+    Libretto libretto;
     struct Node *next;
 };
 
-Node newNode(item x) {
+Node newNode(Libretto x) {
     Node node;
 
     node = malloc(sizeof(struct Node));
 
-    if(node == NULL) {
-        return NULL;
-    }
+    if(node == NULL) return NULL;
 
-    // Set the next pointer to NULL and give the data to the node
-    node->data = x;
+    // Set the next pointer to NULL and give the libretto to the node
+    node->libretto = x;
     node->next = NULL;
 
     return node;
 }
 
-item getData(Node n) {
-    return n->data;
+Libretto getlibretto(Node n) {
+    return n->libretto;
 }
 
-void printList(Node head) {
+/*void printList(Node head) {
     int i = 0;
 
-    // Traverse through nodes and print data of each node
+    // Traverse through nodes and print libretto of each node
     while(head != NULL) {
         printf("Element %d = ", i++);
-        printItem(head->data);
+        printLibretto(head->libretto);
         putchar('\n');
         head = head->next;
     }
-}
+}*/
 
 int countNodes(Node head) {
     int i = 1;
@@ -57,7 +55,7 @@ int countNodes(Node head) {
     return i;
 }
 
-void addEnd(Node *head, item x) {
+void addEnd(Node *head, Libretto x) {
     Node new, last;
 
     new = newNode(x);
@@ -85,7 +83,7 @@ void addEnd(Node *head, item x) {
     }
 }
 
-void addFront(Node *head, item x) {
+void addFront(Node *head, Libretto x) {
     Node new;
 
     new = newNode(x);
@@ -104,7 +102,7 @@ void addFront(Node *head, item x) {
     }
 }
 
-void addPos(Node *head, item x, int pos) {
+void addPos(Node *head, Libretto x, int pos) {
     Node tmp, new;
     int i = 0, n;
 
@@ -160,28 +158,28 @@ void freeList(Node head) {
     }
 }
 
-void removeNode(Node *head, item x) {
+void removeNode(Node *head, Libretto x) {
     Node tmp, previous;
 
     tmp = *head;
 
-    /* If the data is at head set head to next node
+    /* If the libretto is at head set head to next node
     *  and free the previous head
     */
-    if(getData(*head) == x) {
+    if(getlibretto(*head) == x) {
         *head = (*head)->next;
         free(tmp);
         return;
     }
 
-    // Traverse until the data is found or you reach the end of the list 
-    while(getData(tmp) != x && tmp->next != NULL) {
+    // Traverse until the libretto is found or you reach the end of the list 
+    while(getlibretto(tmp) != x && tmp->next != NULL) {
         // Take trace of the node before the one to delete
         previous = tmp;
         tmp = tmp->next;
     }
 
-    /* If the data is found set the next pointer of the previous node
+    /* If the libretto is found set the next pointer of the previous node
     *  to the next node of the node to delete
     */
     if(tmp != NULL) {
