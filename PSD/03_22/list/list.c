@@ -90,18 +90,18 @@ void addFront(Node *head, item x) {
 
     new = newNode(x);
 
+    if(new == NULL) return;
+
     // If there are no nodes, set the created one as head 
     if(*head == NULL) {
         *head = new;
         return;
     }
 
-    if(new != NULL) {
-        // Make the next of the new node as head
-        new->next = *head;
-        // Move the head to point to the new node
-        *head = new;
-    }
+    // Make the next of the new node as head
+    new->next = *head;
+    // Move the head to point to the new node
+    *head = new;
 }
 
 void addPos(Node *head, item x, int pos) {

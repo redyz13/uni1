@@ -106,6 +106,8 @@ void addFront(List l, item x) {
 
     new = newNode(x);
 
+    if(new == NULL) return;
+
     // If there are no nodes, set the created one as head 
     if(l->head == NULL) {
         l->head = new;
@@ -113,12 +115,10 @@ void addFront(List l, item x) {
         return;
     }
 
-    if(new != NULL) {
-        // Make the next of the new node as head
-        new->next = l->head;
-        // Move the head to point to the new node
-        l->head = new;
-    }
+    // Make the next of the new node as head
+    new->next = l->head;
+    // Move the head to point to the new node
+    l->head = new;
 
     l->count++;
 }
