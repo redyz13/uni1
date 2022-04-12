@@ -1,6 +1,6 @@
 CC=gcc
-CFGLAGS=-Wall -g
-BIN = main.o list.o item.o
+CFLAGS=-Wall -g
+BIN=main.o list.o item.o
 
 all: main.out
 
