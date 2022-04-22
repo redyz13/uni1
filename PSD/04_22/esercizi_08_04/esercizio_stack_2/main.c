@@ -64,14 +64,14 @@ Stack merge(Stack s1, Stack s2) {
     tmp1 = clone(s1);
     tmp2 = clone(s2);
 
-    while(!isEmpty(tmp2)) {
-        push(mer, top(tmp2));
-        pop(tmp2);
-    }
-
     while(!isEmpty(tmp1)) {
         push(mer, top(tmp1));
         pop(tmp1);
+    }
+
+    while(!isEmpty(tmp2)) {
+        push(mer, top(tmp2));
+        pop(tmp2);
     }
 
     freeStack(tmp1);
