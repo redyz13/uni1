@@ -74,6 +74,10 @@ Stack merge(Stack s1, Stack s2) {
         pop(tmp2);
     }
 
+    Stack t = mer;
+    mer = inverti(mer);
+    freeStack(t);
+
     freeStack(tmp1);
     freeStack(tmp2);
 
