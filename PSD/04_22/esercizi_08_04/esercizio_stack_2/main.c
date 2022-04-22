@@ -5,7 +5,7 @@ void inserisci(Stack s);
 Stack clone(Stack s); 
 Stack inverti(Stack s);
 Stack merge(Stack s1, Stack s2);
-Stack removeItems(Stack s, Item it);
+void removeItems(Stack s, Item it);
 
 int main(void) {
     Stack s, rev, mer; 
@@ -32,7 +32,7 @@ int main(void) {
 
     putchar('\n');
 
-    mer = removeItems(mer, 5);
+    removeItems(mer, 5);
 
     printStack(mer);
 
@@ -122,7 +122,7 @@ Stack inverti(Stack s) {
     return rev;
 }
 
-Stack removeItems(Stack s, Item it) {
+void removeItems(Stack s, Item it) {
     Stack new;
 
     new = newStack();
@@ -135,13 +135,10 @@ Stack removeItems(Stack s, Item it) {
         pop(s);
     }
 
-    freeStack(s);
+    while(!isEmpty(new)) {
+        push(s, top(new));
+        pop(new);
+    }
 
-    Stack t = new;
-
-    new = inverti(new);
-
-    freeStack(t);
-
-    return new;
+    freeStack(new);
 }
