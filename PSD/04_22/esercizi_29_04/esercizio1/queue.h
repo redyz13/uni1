@@ -10,6 +10,8 @@ int enqueue(Queue q, Punto p);
 
 Punto dequeue(Queue q);
 
+void printQueue(Queue q);
+
 void freeQueue(Queue q);
 
 void destroyQueue(Queue q);

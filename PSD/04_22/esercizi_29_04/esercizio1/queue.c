@@ -77,6 +77,21 @@ Punto dequeue(Queue q) {
     return val;
 }
 
+void printQueue(Queue q) {
+    struct Node *head;
+    int i = 0;
+
+    head = q->head;
+
+    while(head != NULL) {
+        printf("Element %d\n", i);
+        printPunto(head->data);
+        putchar('\n');
+        head = head->next;
+        i++;
+    }
+}
+
 void freeQueue(Queue q) {
     struct Node *head, *tmp;
 

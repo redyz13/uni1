@@ -7,7 +7,7 @@ all: main.out
 main.out: $(BIN)
 	$(CC) $(CFLAGS) -o $@ $^ -lm
 
-main.o: main.c queue.h
+main.o: main.c queue.h util.h
 	$(CC) $(CFLAGS) -c $<
 
 queue.o: queue.c queue.h 

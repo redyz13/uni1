@@ -4,6 +4,8 @@ typedef struct Punto *Punto;
 
 Punto creaPunto(float x, float y);
 
+void printPunto(Punto p);
+
 float getAscissa(Punto p);
 
 float getOrdinata(Punto p);
