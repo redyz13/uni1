@@ -12,5 +12,4 @@ List ordina_crescente(List l);
 
 void riordina(List* l, char coordinata,char criterio);
 
-List zigzag(List* l);
-
+List zigzag(List l);

@@ -4,13 +4,13 @@
 
 int main(void) {
     List list;
-    int d_min;
+    // int d_min;
     Punto p;
     
     list = newList();
 
-    for(int i = 1; i < 9; i++) {
-        p = creaPunto(i, i);
+    for(int i = 1; i < 10; i++) {
+        p = creaPunto(i, i + 3);
         if(p == NULL) return -1;
         list = addHead(list, p);
     }
@@ -18,67 +18,76 @@ int main(void) {
     list = reverseList(list);
     printList(list);
     
-    d_min = distanza_minore(list, 0.5);
-    
-    printf("Il numero di coppie con una distanza minore di 0.5 sono %d\n", d_min);
+    // d_min = distanza_minore(list, 0.5);
+    // 
+    // printf("Il numero di coppie con una distanza minore di 0.5 sono %d\n", d_min);
+    //
+    // Punto *coppia;
+    //
+    // coppia = distanza_massima(list);
+    //
+    // printf("\nCoppia di punti a distanza massima:\n");
+    // printItem(coppia[0]);
+    // printItem(coppia[1]);
+    // 
+    // char criterio, coordinata;
+    // 
+    // printf("\nAggiungi la coordinata da ordinare: ");
+    // coordinata = getchar();
+    //
+    // printf("Aggiungi il criterio secondo cui ordinarla");
+    // printf(" (c = crescente , d = decrescente): ");
+    // 
+    // getchar();
+    // 
+    // criterio = getchar();
+    //
+    // list = reverseList(list);
+    //
+    // riordina(&list, coordinata, criterio);
+    //
+    // putchar('\n');
+    // printList(list);
+    //
+    // List sotto_l;
+    //
+    // sotto_l = sottolista(&list, 2, 5);
+    // 
+    // printf("\nLista vecchia\n");
+    // printList(list);
+    //
+    // printf("\nSottolista\n");
+    // printList(sotto_l);
+    // 
+    // List k; 
+    //
+    // k = newList();
+    //
+    // for(int i = 9; i < 11; i++) {
+    //     k = addHead(k, creaPunto(i, i));
+    // }
+    // 
+    // k = reverseList(k);
+    //
+    // list = inserisci_lista(list, k, 3);
+    // 
+    // printf("Lista l dopo l'aggiunta: \n");
+    // printList(list);
+    // 
+    // putchar('\n');
+    //
+    // printf("Lista k dopo l'aggiunta: \n");
+    // printList(k);
+    // 
 
-    Punto *coppia;
+    List zigzagl;
 
-    coppia = distanza_massima(list);
+    zigzagl = zigzag(list);
 
-    printf("\nCoppia di punti a distanza massima:\n");
-    printItem(coppia[0]);
-    printItem(coppia[1]);
-    
-    char criterio, coordinata;
-    
-    printf("\nAggiungi la coordinata da ordinare: ");
-    coordinata = getchar();
+    printf("\nLista dopo zig zag:\n");
 
-    printf("Aggiungi il criterio secondo cui ordinarla");
-    printf(" (c = crescente , d = decrescente): ");
-    
-    getchar();
-    
-    criterio = getchar();
+    printList(zigzagl);
 
-    list = reverseList(list);
-
-    riordina(&list, coordinata, criterio);
-
-    putchar('\n');
-    printList(list);
-
-    List sotto_l;
-
-    sotto_l = sottolista(&list, 2, 5);
-    
-    printf("\nLista vecchia\n");
-    printList(list);
-
-    printf("\nSottolista\n");
-    printList(sotto_l);
-    
-    List k; 
-
-    k = newList();
-
-    for(int i = 9; i < 11; i++) {
-        k = addHead(k, creaPunto(i, i));
-    }
-    
-    k = reverseList(k);
-
-    list = inserisci_lista(list, k, 3);
-    
-    printf("Lista l dopo l'aggiunta: \n");
-    printList(list);
-    
-    putchar('\n');
-
-    printf("Lista k dopo l'aggiunta: \n");
-    printList(k);
-    
     return 0;
 }
 
@@ -258,4 +267,8 @@ void riordina(List *l, char coordinata, char criterio) {
         new = reverseList(new);
 
     *l = new;
+}
+
+List zigzag(List l) {
+    return NULL;
 }
