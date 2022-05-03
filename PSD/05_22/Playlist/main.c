@@ -10,8 +10,8 @@ int main(void) {
 
     c1 = creaCanzone("Titolo0", "Cantante0", 120);
     c2 = creaCanzone("Titolo1", "Cantante1", 140);
-    c3 = creaCanzone("Titolo2", "Cantante2", 160);
-    c4 = creaCanzone("Titolo3", "Cantante3", 180);
+    c3 = creaCanzone("Titolo2", "Cantante0", 160);
+    c4 = creaCanzone("Titolo3", "Cantante2", 180);
 
     enqueue(p, c1);
     enqueue(p, c2);
@@ -28,10 +28,17 @@ int main(void) {
 
     printPlaylist(p);
 
+    printf("\nCanzoni del cantante Cantante0:\n");
+
+    Playlist s = canzoniCantante(p, "Cantante0");
+
+    printPlaylist(s);
+
     freeCanzone(c1);
     freeCanzone(c2);
     freeCanzone(c3);
     freeCanzone(c4);
+    freePlaylist(s);
     freePlaylist(p);
 
     return 0;

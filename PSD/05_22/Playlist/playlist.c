@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "playlist.h"
 
 struct Node {
@@ -135,6 +136,52 @@ int forward(Playlist p, int pos) {
     head->next->c = to_forward;
 
     return 1;
+}
+
+int back(Playlist p, int pos) {
+    if(isEmpty(p)) return 0;
+
+    struct Node *head = p->head;
+    Canzone to_forward;
+    int i = 0;
+
+    if(pos == 0) return 0;
+
+    while(i < pos - 1 && head != NULL) {
+        head = head->next;
+        i++;
+    }
+
+    if(head == NULL) return 0;
+    if(head->next == NULL) return 0;
+
+    to_forward = head->c;
+    head->c = head->next->c;
+    head->next->c = to_forward;
+
+    return 1;
+}
+
+Playlist canzoniCantante(Playlist p, char *cantante) {
+    if(isEmpty(p)) return NULL;
+
+    Playlist s;
+    struct Node *head = p->head;
+    char *cantante_tmp;
+
+    s = newPlaylist();
+
+    while(head != NULL) {
+        cantante_tmp = getCantante(head->c);
+
+        if(!(strcmp(cantante, cantante_tmp))) {
+            enqueue(s, head->c);
+        }
+
+        head = head->next;
+    }
+
+    return s;
 }
 
 void freePlaylist(Playlist p) {

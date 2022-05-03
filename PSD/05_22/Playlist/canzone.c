@@ -36,6 +36,24 @@ Canzone creaCanzone(char *ti, char *ca, int du) {
     return c;
 }
 
+char *getTitolo(Canzone c) {
+    if(c == NULL) return NULL;
+
+    return c->titolo;
+}
+
+char *getCantante(Canzone c) {
+    if(c == NULL) return NULL;
+
+    return c->cantante;
+}
+
+int getDurata(Canzone c) {
+    if(c == NULL) return 0;
+
+    return c->durata;
+}
+
 void printCanzone(Canzone c) {
     printf("\nTitolo: %s", c->titolo);
     printf("\nCantante: %s", c->cantante);

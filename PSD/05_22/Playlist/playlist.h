@@ -43,6 +43,10 @@ int removeCanzone(Playlist p, int pos);
 */
 int forward(Playlist p, int pos);
 
+int back(Playlist p, int pos);
+
+Playlist canzoniCantante(Playlist p, char *cantante);
+
 void printPlaylist(Playlist p);
 
 void freePlaylist(Playlist p);
