@@ -5,7 +5,7 @@ typedef struct Scheda *Scheda;
 #define NULLITEM NULL
 
 Scheda creaScheda(int id_scheda, int aventi_diritto_voto, int votanti,
-				  int voti_nulli, int voti_si, int voti_no);
+                  int voti_nulli, int voti_si, int voti_no);
 
 void printSeggio(Seggio seggio);
 
