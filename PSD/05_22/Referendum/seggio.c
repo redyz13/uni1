@@ -20,6 +20,7 @@ void printSeggio(Seggio seggio) {
 	if (seggio == NULLITEM) return;
 	
 	printf("ID Seggio: %d\n", seggio->id_seggio);
+	printf("ID scheda seggio: %d\n", seggio->scheda->id_scheda);
 }
 
 Scheda getScheda(Seggio seggio) {

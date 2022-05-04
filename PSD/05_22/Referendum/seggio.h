@@ -1,4 +1,5 @@
 typedef struct Seggio *Seggio;
+
 typedef struct Scheda *Scheda;
 
 #define NULLITEM NULL

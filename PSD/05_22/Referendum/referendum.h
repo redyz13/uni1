@@ -8,4 +8,4 @@ int isEmpty(Referendum r);
 
 Referendum insertSeggio(Referendum r, Seggio seggio);
 
-void stampa(Referendum r);
+void printSeggi(Referendum r);

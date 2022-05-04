@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "referendum.h"
 
-#define MAXSEGGI 50
+#define MAXSEGGI 20
 
 struct Referendum {
 	struct Referendum *next;
@@ -38,14 +38,12 @@ static int isIdPresent(Referendum r, Scheda scheda) {
 Referendum insertSeggio(Referendum r, Seggio seggio) {
 	if (seggio == NULLITEM) return r;
 	
-	Scheda scheda = getScheda(seggio); 
-	
-	// L'id dei seggi deve essere compreso tra 0 e MAXSEGGI
-	if (getIdSeggio(seggio) > MAXSEGGI || getIdSeggio(seggio) < 0)
+	// L'id dei seggi deve essere compreso tra 1 e MAXSEGGI
+	if (getIdSeggio(seggio) > MAXSEGGI || getIdSeggio(seggio) < 1)
 		return r;
 	
 	// L'id della scheda del seggio deve essere univoco
-	if (isIdPresent(r, scheda))
+	if (isIdPresent(r, getScheda(seggio)))
 		return r;
 	
 	Referendum new;
@@ -67,7 +65,7 @@ Referendum insertSeggio(Referendum r, Seggio seggio) {
 	return new;
 }
 
-void stampa(Referendum r) {
+void printSeggi(Referendum r) {
 	int i = 0;
 	
 	while(r != NULL) {
