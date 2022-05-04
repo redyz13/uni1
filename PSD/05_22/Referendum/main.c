@@ -20,5 +20,8 @@ int main(void) {
 	
 	printSeggi(r);
 	
+	completeRef(r) ? printf("La lista dei seggi è completa\n")
+				   : printf("La lista dei seggi non è completa\n");
+	
 	return 0;
 }

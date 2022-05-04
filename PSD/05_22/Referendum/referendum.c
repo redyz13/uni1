@@ -38,6 +38,9 @@ static int isIdPresent(Referendum r, Scheda scheda) {
 Referendum insertSeggio(Referendum r, Seggio seggio) {
 	if (seggio == NULLITEM) return r;
 	
+	// Controlla se la lista dei seggi è piena
+	if (completeRef(r)) return r;
+	
 	// L'id dei seggi deve essere compreso tra 1 e MAXSEGGI
 	if (getIdSeggio(seggio) > MAXSEGGI || getIdSeggio(seggio) < 1)
 		return r;
@@ -68,10 +71,21 @@ Referendum insertSeggio(Referendum r, Seggio seggio) {
 void printSeggi(Referendum r) {
 	int i = 0;
 	
-	while(r != NULL) {
+	while (r != NULL) {
 		printf("--- Seggio %d ---\n", i++);
 		printSeggio(r->seggio);
 		putchar('\n');
 		r = r->next;
 	}
+}
+
+int completeRef(Referendum r) {
+	int i = 0;
+	
+	while (r != NULL) {
+		i++;
+		r = r->next;
+	}
+	
+	return i >= MAXSEGGI;
 }
