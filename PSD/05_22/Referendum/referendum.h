@@ -12,3 +12,7 @@ void printSeggi(Referendum r);
 
 // Verifica se la lista dei seggi è completa
 int completeRef(Referendum r);
+
+void stampaReport(Referendum r);
+
+int noSiRef(Referendum r);

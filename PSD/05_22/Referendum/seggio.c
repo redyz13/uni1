@@ -29,6 +29,30 @@ Scheda getScheda(Seggio seggio) {
     return seggio->scheda;
 }
 
+int getVotanti(Scheda scheda) {
+    if (scheda == NULLITEM) return -1;
+
+	return scheda->votanti;
+}
+
+int getVotiNulli(Scheda scheda) {
+    if (scheda == NULLITEM) return -1;
+
+	return scheda->voti_nulli;
+}
+
+int getVotiSi(Scheda scheda) {
+    if (scheda == NULLITEM) return -1;
+
+	return scheda->voti_si;
+}
+
+int getVotiNo(Scheda scheda) {
+    if (scheda == NULLITEM) return -1;
+
+	return scheda->voti_no;
+}
+
 int getIdScheda(Scheda scheda) {
     if (scheda == NULLITEM) return -1;
     

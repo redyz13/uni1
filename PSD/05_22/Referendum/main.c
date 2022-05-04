@@ -18,10 +18,19 @@ int main(void) {
     r = insertSeggio(r, seggio1);
     r = insertSeggio(r, seggio2);
     
+    printf("[Lista seggi]\n\n");
+    
     printSeggi(r);
     
     completeRef(r) ? printf("La lista dei seggi è completa\n")
                    : printf("La lista dei seggi non è completa\n");
+
+	stampaReport(r);
+
+    printf("\n--- Esito del referendum ---\n");
+
+    noSiRef(r) ? printf("\nApprovato\n")
+               : printf("\nNon approvato\n");
     
     return 0;
 }

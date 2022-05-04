@@ -89,3 +89,53 @@ int completeRef(Referendum r) {
     
     return i >= MAXSEGGI;
 }
+
+void stampaReport(Referendum r) {
+    if (isEmpty(r)) return;
+
+    Seggio seggio;
+    Scheda scheda;
+
+    int tot_votanti = 0, tot_voti_nulli = 0;
+    int tot_voti_si = 0, tot_voti_no = 0;
+
+    printf("\n--- REPORT ---\n");
+
+    while (!isEmpty(r)) {
+        seggio = r->seggio;
+        scheda = getScheda(seggio);
+
+        tot_votanti += getVotanti(scheda);
+        tot_voti_nulli += getVotiNulli(scheda);
+        tot_voti_si += getVotiSi(scheda);
+        tot_voti_no += getVotiNo(scheda);
+
+        r = r->next;
+    }
+
+    printf("\nTotale votanti: %d", tot_votanti);
+    printf("\nTotale voti nulli: %d", tot_voti_nulli);
+    printf("\nTotale voti sì: %d", tot_voti_si);
+    printf("\nTotale voti no: %d\n", tot_voti_no);
+}
+
+int noSiRef(Referendum r) {
+    if (isEmpty(r)) return 0;
+
+    Seggio seggio;
+    Scheda scheda;
+
+    int tot_voti_si = 0, tot_voti_no = 0;
+
+    while (!isEmpty(r)) {
+        seggio = r->seggio;
+        scheda = getScheda(seggio);
+
+        tot_voti_si += getVotiSi(scheda);
+        tot_voti_no += getVotiNo(scheda);
+    
+        r = r->next;
+    }
+
+    return tot_voti_si > tot_voti_no;
+}
