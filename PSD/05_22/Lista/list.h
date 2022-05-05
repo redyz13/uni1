@@ -28,4 +28,8 @@ int removeItem(List l, Item it);
 
 void printList(List l);
 
+List reverseList(List l);
+
+List cloneList(List l);
+
 void freeList(List l);

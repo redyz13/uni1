@@ -14,6 +14,7 @@ int main(void) {
     addLast(l, 100);
     addPos(l, 999, 4);
 
+    // l = reverseList(l);
     printList(l);
 
     printf("\nFirst element: %d", getFirst(l));
@@ -36,7 +37,12 @@ int main(void) {
     printf("\nList after removing the element 30:\n\n");
     printList(l);
 
+    printf("\nCloned list:\n\n");
+    List k = cloneList(l);
+    printList(k);
+
     freeList(l);
+    freeList(k);
 
     return 0;
 }

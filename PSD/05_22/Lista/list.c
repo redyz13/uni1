@@ -234,6 +234,42 @@ void printList(List l) {
     }
 }
 
+List reverseList(List l) {
+    if (l->head == NULL) return NULL;
+
+    List reversed = newList();
+    struct Node *head = l->head;
+    Item it;
+
+    while (head != NULL) {
+        it = getItem(head);
+        addFront(reversed, it);
+        head = head->next;
+    }
+
+    freeList(l);
+
+    return reversed;
+}
+
+List cloneList(List l) {
+    if (l->head == NULL) return NULL;
+
+    List clone = newList();
+    struct Node *head = l->head;
+    Item it;
+
+    while (head != NULL) {
+        it = getItem(head);
+        addFront(clone, it);
+        head = head->next;
+    }
+
+    clone = reverseList(clone);
+
+    return clone;
+}
+
 void freeList(List l) {
     struct Node *tmp;
 
