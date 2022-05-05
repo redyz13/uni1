@@ -6,7 +6,7 @@ List newList(void);
 
 int isEmpty(List l);
 
-int addFront(List l, Item it);
+int addFirst(List l, Item it);
 
 int addLast(List l, Item it);
 
@@ -25,6 +25,12 @@ int removeLast(List l);
 int removePos(List l, int pos);
 
 int removeItem(List l, Item it);
+
+int contains(List l, Item it);
+
+int indexOf(List l, Item it);
+
+int setValue(List l, Item it, int pos);
 
 void printList(List l);
 

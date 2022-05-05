@@ -34,7 +34,7 @@ static Item getItem(struct Node *n) {
     return n->data;
 }
 
-int addFront(List l, Item it) {
+int addFirst(List l, Item it) {
     struct Node *new;
 
     new = malloc(sizeof(struct Node));
@@ -222,6 +222,58 @@ int removeItem(List l, Item it) {
     return 1;
 }
 
+int contains(List l, Item it) {
+    struct Node *head = l->head; 
+    
+    while (head != NULL){
+        if (isEqual(it, getItem(head)))
+            return 1;
+        
+        head = head->next;
+    }
+
+    return 0;
+}
+
+int indexOf(List l, Item it) {
+    struct Node *head = l->head;
+    int i = 0;
+
+    while (head != NULL) {
+        if (isEqual(it, getItem(head)))
+            return i;
+        
+        i++;
+
+        head = head->next;
+    }
+
+    return -1;
+}
+
+int setValue(List l, Item it, int pos) {
+    if (l->head == NULL) return 0;
+
+    if (pos == 0) {
+        l->head->data = it;
+        return 1;
+    }
+
+    struct Node *tmp = l->head;
+    int i = 0;
+
+    while (i < pos && tmp != NULL) {
+        tmp = tmp->next;
+        i++;
+    }
+
+    if (tmp == NULL) return 0;
+
+    tmp->data = it;
+
+    return 1;
+}
+
 void printList(List l) {
     struct Node *head = l->head;
     int i = 0;
@@ -243,7 +295,7 @@ List reverseList(List l) {
 
     while (head != NULL) {
         it = getItem(head);
-        addFront(reversed, it);
+        addFirst(reversed, it);
         head = head->next;
     }
 
@@ -261,7 +313,7 @@ List cloneList(List l) {
 
     while (head != NULL) {
         it = getItem(head);
-        addFront(clone, it);
+        addFirst(clone, it);
         head = head->next;
     }
 

@@ -6,12 +6,12 @@ int main(void) {
 
     l = newList();
 
-    addFront(l, 10);
-    addFront(l, 20);
-    addFront(l, 30);
-    addFront(l, 40);
-    addFront(l, 50);
-    addLast(l, 100);
+    addFirst(l, 10);
+    addFirst(l, 20);
+    addFirst(l, 30);
+    addFirst(l, 40);
+    addFirst(l, 50);
+    addFirst(l, 100);
     addPos(l, 999, 4);
 
     // l = reverseList(l);
@@ -40,6 +40,10 @@ int main(void) {
     printf("\nCloned list:\n\n");
     List k = cloneList(l);
     printList(k);
+
+    setValue(l, 100, 1);
+    printf("\nList after setting the element at pos 1 to 100:\n\n");
+    printList(l);
 
     freeList(l);
     freeList(k);
