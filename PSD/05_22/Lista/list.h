@@ -39,3 +39,5 @@ List reverseList(List l);
 List cloneList(List l);
 
 void freeList(List l);
+
+void destroyList(List l);

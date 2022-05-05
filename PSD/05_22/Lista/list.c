@@ -153,6 +153,7 @@ int removeFirst(List l) {
     struct Node *tmp = l->head;
 
     l->head = l->head->next;
+    // freeItem(tmp->data);
     free(tmp);
     (l->size)--;
 
@@ -170,6 +171,7 @@ int removePos(List l, int pos) {
 
     if (pos == 0) {
         l->head = l->head->next;
+        // freeItem(tmp->data);
         free(tmp);
         (l->size)--;
         return 1;
@@ -188,6 +190,8 @@ int removePos(List l, int pos) {
 
     tmp = prev->next;
     prev->next = tmp->next;
+
+    // freeItem(tmp->data);
     free(tmp);
     (l->size)--;
 
@@ -201,6 +205,7 @@ int removeItem(List l, Item it) {
 
     if(isEqual(l->head->data, it)) {
         l->head = l->head->next;
+        // freeItem(tmp->data);
         free(tmp);
         (l->size)--;
         return 1;
@@ -216,6 +221,7 @@ int removeItem(List l, Item it) {
     if (tmp == NULL) return 0;
 
     prev->next = tmp->next;
+    // freeItem(tmp->data);
     free(tmp);
     (l->size)--;
 
@@ -254,7 +260,10 @@ int indexOf(List l, Item it) {
 int setValue(List l, Item it, int pos) {
     if (l->head == NULL) return 0;
 
+    // Item tmp_ = l->head->data;
+
     if (pos == 0) {
+        // freeItem(tmp_);
         l->head->data = it;
         return 1;
     }
@@ -269,7 +278,11 @@ int setValue(List l, Item it, int pos) {
 
     if (tmp == NULL) return 0;
 
+    // tmp_ = tmp->data;
+
     tmp->data = it;
+
+    // freeItem(tmp_);
 
     return 1;
 }
@@ -328,6 +341,19 @@ void freeList(List l) {
     while (l->head != NULL) {
         tmp = l->head;
         l->head = l->head->next;
+        free(tmp);
+    }
+
+    free(l);
+}
+
+void destroyList(List l) {
+    struct Node *tmp;
+
+    while (l->head != NULL) {
+        tmp = l->head;
+        l->head = l->head->next;
+        // freeItem(tmp->data);
         free(tmp);
     }
 

@@ -46,7 +46,7 @@ int main(void) {
     printList(l);
 
     freeList(l);
-    freeList(k);
+    destroyList(k);
 
     return 0;
 }
