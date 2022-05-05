@@ -24,6 +24,8 @@ int removeLast(List l);
 
 int removePos(List l, int pos);
 
+int removeItem(List l, Item it);
+
 void printList(List l);
 
 void freeList(List l);

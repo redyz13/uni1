@@ -28,6 +28,12 @@ int isEmpty(List l) {
     return l->size == 0;
 }
 
+static Item getItem(struct Node *n) {
+    if (n == NULL) return NULLITEM;
+
+    return n->data;
+}
+
 int addFront(List l, Item it) {
     struct Node *new;
 
@@ -181,6 +187,34 @@ int removePos(List l, int pos) {
     if (prev->next == NULL)  return 0;
 
     tmp = prev->next;
+    prev->next = tmp->next;
+    free(tmp);
+    (l->size)--;
+
+    return 1;
+}
+
+int removeItem(List l, Item it) {
+    if (l->head == NULL) return 0;
+
+    struct Node *tmp = l->head;
+
+    if(isEqual(l->head->data, it)) {
+        l->head = l->head->next;
+        free(tmp);
+        (l->size)--;
+        return 1;
+    }
+
+    struct Node *prev;
+
+    while(!isEqual(getItem(tmp), it) && tmp != NULL) {
+        prev = tmp;
+        tmp = tmp->next;
+    }
+
+    if (tmp == NULL) return 0;
+
     prev->next = tmp->next;
     free(tmp);
     (l->size)--;

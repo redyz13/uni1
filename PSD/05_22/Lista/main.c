@@ -9,6 +9,8 @@ int main(void) {
     addFront(l, 10);
     addFront(l, 20);
     addFront(l, 30);
+    addFront(l, 40);
+    addFront(l, 50);
     addLast(l, 100);
     addPos(l, 999, 4);
 
@@ -28,6 +30,10 @@ int main(void) {
 
     removeLast(l);
     printf("\nList after removing the last element:\n\n");
+    printList(l);
+
+    removeItem(l, 30);
+    printf("\nList after removing the element 30:\n\n");
     printList(l);
 
     freeList(l);
