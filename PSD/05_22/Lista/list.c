@@ -153,7 +153,9 @@ int removeFirst(List l) {
     return 1;
 }
 
-int removeLast(List l);
+int removeLast(List l) {
+    return removePos(l, (l->size) - 1);
+}
 
 int removePos(List l, int pos) {
     if (l->head == NULL) return 0;
@@ -196,4 +198,16 @@ void printList(List l) {
         putchar('\n');
         head = head->next;
     }
+}
+
+void freeList(List l) {
+    struct Node *tmp;
+
+    while (l->head != NULL) {
+        tmp = l->head;
+        l->head = l->head->next;
+        free(tmp);
+    }
+
+    free(l);
 }

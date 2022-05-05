@@ -18,9 +18,19 @@ int main(void) {
     printf("\nLast element: %d", getLast(l));
     printf("\nElement at position 3: %d", getPos(l, 3));
 
-    removePos(l, 1);
-    printf("\n\nList after removing the element at position 1:\n");
+    removePos(l, 4);
+    printf("\n\nList after removing the element at position 4:\n\n");
     printList(l);
+
+    removeFirst(l);
+    printf("\nList after removing the first element:\n\n");
+    printList(l);
+
+    removeLast(l);
+    printf("\nList after removing the last element:\n\n");
+    printList(l);
+
+    freeList(l);
 
     return 0;
 }
