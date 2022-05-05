@@ -179,7 +179,7 @@ int removePos(List l, int pos) {
     if (prev->next == NULL)  return 0;
 
     tmp = prev->next;
-    prev = tmp->next;
+    prev->next = tmp->next;
     free(tmp);
     (l->size)--;
 
