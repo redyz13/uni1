@@ -30,6 +30,10 @@ int main(void) {
     return 0;
 }
 
+/*
+    Precondizioni:
+        1. n < m
+*/
 List sottolista(List l, List subl, int n, int m) {
     // Passo base
     if (n > m) return reverseList(subl);
