@@ -51,9 +51,7 @@ int sizeList(List head) {
 int sizeListRec(List head) {
     if (head == NULL) return 0;
 
-    head = head->next;
-
-    return 1 + sizeListRec(head);
+    return 1 + sizeListRec(head->next);
 }
 
 void printList(List head) {
