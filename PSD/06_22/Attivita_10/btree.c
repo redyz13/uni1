@@ -8,24 +8,24 @@ struct Node {
     struct Node *right;
 };
 
-static void setItem(Btree t, Item it) {
-    if (t == NULL) return;
-
-    t->data = it;
-}
-
-static Item getItem(Btree t) {
-    if (t == NULL) return NULLITEM;
-
-    return t->data;
-}
-
 Btree newBtree(void) {
     return NULL;
 }
 
 int isEmpty(Btree t) {
     return t == NULL;
+}
+
+void setItem(Btree t, Item it) {
+    if (t == NULL) return;
+
+    t->data = it;
+}
+
+Item getItem(Btree t) {
+    if (t == NULL) return NULLITEM;
+
+    return t->data;
 }
 
 Btree figlioSX(Btree t) {
@@ -58,11 +58,11 @@ Btree consBtree(Item it, Btree sx, Btree dx) {
     return new;
 }
 
-void inorder(Btree T) {
-	if (isEmpty(T)) return;
+void preorder(Btree t) {
+	if (isEmpty(t)) return;
 	
-	printItem(getItem(getRoot(T)));
+	printItem(getItem(getRoot(t)));
     putchar(' ');
-	inorder(figlioSX(T));
-	inorder(figlioDX(T));
+	preorder(figlioSX(t));
+	preorder(figlioDX(t));
 }

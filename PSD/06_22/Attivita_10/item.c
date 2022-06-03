@@ -3,7 +3,7 @@
 
 // Change the function based on the item type (TODO in case)
 void printItem(Item it){
-    printf("%d", it);
+    printf("%c", it);
 }
 
 /* Change the function based on the item type (TODO in case)

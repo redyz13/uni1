@@ -1,5 +1,5 @@
 // Give the item a type (TODO)
-typedef int Item;
+typedef char Item;
 
 #define NULLITEM 0
 
