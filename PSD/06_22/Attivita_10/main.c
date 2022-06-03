@@ -2,10 +2,19 @@
 #include "btree.h"
 
 int main(void) {
-    Btree t;
+    Btree r, sx, dx;
 
-    t = newBtree();
-    t = consBtree(10, NULL, NULL);
+    sx = newBtree();
+    dx = newBtree();
+    sx = consBtree(10, NULL, NULL);
+    dx = consBtree(20, NULL, NULL);
+
+    r = newBtree();
+    r = consBtree(30, sx, dx);
+
+    inorder(r);
+
+    putchar('\n');
 
     return 0;
 }

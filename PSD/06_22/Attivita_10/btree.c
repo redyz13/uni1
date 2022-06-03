@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "btree.h"
 
@@ -39,6 +40,10 @@ Btree figlioDX(Btree t) {
     return t->right;
 }
 
+struct Node *getRoot(Btree t) {
+    return t;
+}
+
 Btree consBtree(Item it, Btree sx, Btree dx) {
     Btree new;
 
@@ -51,4 +56,13 @@ Btree consBtree(Item it, Btree sx, Btree dx) {
     new->right = dx;
 
     return new;
+}
+
+void inorder(Btree T) {
+	if (isEmpty(T)) return;
+	
+	printItem(getItem(getRoot(T)));
+    putchar(' ');
+	inorder(figlioSX(T));
+	inorder(figlioDX(T));
 }
