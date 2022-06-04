@@ -1,49 +1,45 @@
 #include <stdio.h>
+#include <limits.h>
 #include "btree.h"
 
 int contaFoglie(Btree t);
 Btree speculare(Btree t);
-int max(Btree t);
-int min(Btree t);
+Item max(Btree t);
+Item min(Btree t);
 
 int main(void) {
-    Btree h, a, d, l, o, q, c, p, s;
+    Btree a, b, c, d, e, f, g;
 
-    h = newBtree();
     a = newBtree();
-    d = newBtree();
-    l = newBtree();
-    o = newBtree();
-    q = newBtree();
+    b = newBtree();
     c = newBtree();
-    p = newBtree();
-    s = newBtree();
+    d = newBtree();
+    e = newBtree();
+    f = newBtree();
 
-    o = consBtree(8, NULL, NULL);
-    q = consBtree(4, o, NULL);
-    l = consBtree(5, NULL, NULL);
-    d = consBtree(2, q, l);
-    a = consBtree(9, NULL, NULL);
-    s = consBtree(6, a, NULL);
-    p = consBtree(7, NULL, NULL);
-    c = consBtree(3, s, p);
-    h = consBtree(1, d, c);
+    d = consBtree(8, NULL, NULL);
+    e = consBtree(15, NULL, NULL);
+    f = consBtree(6, NULL, NULL);
+    g = consBtree(12, NULL, NULL);
+    b = consBtree(9, d, e);
+    c = consBtree(11, f, g);
+    a = consBtree(10, b, c);
 
     printf("Albero:\n");
-    preorder(h);
+    preorder(a);
 
-    printf("\n\nNumero di foglie: %d\n", contaFoglie(h));
+    printf("\n\nNumero di foglie: %d\n", contaFoglie(a));
 
     Btree new = newBtree();
-    new = speculare(h);
+    new = speculare(a);
 
     printf("\nAlbero speculare:\n");
     preorder(new);
 
-    int massimo = max(new);
+    int massimo = max(a);
     printf("\n\nIl massimo è %d", massimo);
     
-    int minimo = min(new);
+    int minimo = min(a);
     printf("\nIl minimo è %d\n", minimo);
 
     return 0;
@@ -65,47 +61,41 @@ Btree speculare(Btree t) {
     return consBtree(getItem(t), speculare(figlioDX(t)), speculare(figlioSX(t)));
 }
 
-int max(Btree t) {
-    Item massimo, tmp;
+Item max(Btree t) {
+    Item massimo;
     Item sx, dx;
-    
-    tmp = getItem(t);
+     
+    if (isEmpty(t)) return INT_MIN;
 
-    if (/*tmp != NULLITEM*/1)
-        massimo = tmp;
-    
-    if (isEmpty(t)) return massimo;
+    massimo = getItem(t);
 
     sx = max(figlioSX(t));
     dx = max(figlioDX(t));
 
-    if(massimo < sx)
+    if (massimo < sx)
         massimo = sx;
 
-    if(massimo < dx)
+    if (massimo < dx)
         massimo = dx; 
 
     return massimo;
 }
 
-int min(Btree t) {
-    Item minimo, tmp;
+Item min(Btree t) {
+    Item minimo;
     Item sx, dx;
     
-    tmp = getItem(t);
+    if (isEmpty(t)) return INT_MAX;
 
-    if (tmp != NULLITEM)
-        minimo = tmp;
-    
-    if (isEmpty(t)) return minimo;
+    minimo = getItem(t);
 
-    sx = max(figlioSX(t));
-    dx = max(figlioDX(t));
+    sx = min(figlioSX(t));
+    dx = min(figlioDX(t));
 
-    if(minimo > sx)
+    if (minimo > sx)
         minimo = sx;
 
-    if(minimo > dx)
+    if (minimo > dx)
         minimo = dx; 
 
     return minimo;
