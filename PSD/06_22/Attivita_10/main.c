@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <limits.h>
 #include "btree.h"
 
 int contaFoglie(Btree t);
@@ -65,7 +64,7 @@ Item max(Btree t) {
     Item massimo;
     Item sx, dx;
      
-    if (isEmpty(t)) return INT_MIN;
+    if (isEmpty(t)) return ITEM_MIN;
 
     massimo = getItem(t);
 
@@ -85,7 +84,7 @@ Item min(Btree t) {
     Item minimo;
     Item sx, dx;
     
-    if (isEmpty(t)) return INT_MAX;
+    if (isEmpty(t)) return ITEM_MAX;
 
     minimo = getItem(t);
 

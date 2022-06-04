@@ -1,7 +1,11 @@
+#include <limits.h>
+
 // Give the item a type (TODO)
 typedef int Item;
 
 #define NULLITEM 0
+#define ITEM_MAX INT_MAX 
+#define ITEM_MIN INT_MIN 
 
 // Print data of an item to stdout
 void printItem(Item it);
