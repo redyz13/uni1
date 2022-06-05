@@ -1,20 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "btree.h"
+#include "util.h"
 
-typedef struct Diff {
+struct Diff {
     int livello;
     Item a;
     Item b;
-} Diff;
-
-Btree createBtree(void);
-int contaFoglie(Btree t);
-Btree speculare(Btree t);
-Item max(Btree t);
-Item min(Btree t);
-int uguali(Btree t1, Btree t2);
-int uguali_diff(Btree t1, Btree t2, Diff *diff);
+};
 
 int main(void) {
     Btree a = createBtree();
@@ -52,6 +44,11 @@ int main(void) {
     }
 
     printf("\nStampa dell'albero:\n");
+    print2D(a);
+
+    a = aggiungiNodo(a, 13);
+
+    printf("\nStampa dell'albero dopo l'aggiunta dell'item 13:\n");
     print2D(a);
 
     return 0;
@@ -159,4 +156,39 @@ int uguali_diff(Btree t1, Btree t2, Diff *diff) {
     }
 
     return 0;
+}
+
+Btree aggiungiNodo(Btree t, Item nodo) {
+    if (isEmpty(t)) {
+        return consBtree(nodo, NULL, NULL);
+    }
+
+    Queue q = newQueue();
+    Btree sx, dx;
+    enqueue(q, t);
+
+    while (!isEmptyQueue(q)) {
+        Btree tmp = dequeue(q);
+
+        sx = figlioSX(tmp);
+        dx = figlioDX(tmp);
+
+        if (!isEmpty(sx)) {
+            enqueue(q, sx);
+        }
+        else {
+            sx = consBtree(nodo, NULL, NULL);
+            return t;
+        }
+
+        if (!isEmpty(dx)) {
+            enqueue(q, dx);
+        }
+        else {
+            dx = consBtree(nodo, NULL, NULL);
+            return t;
+        }
+    }
+
+    return NULL;
 }
