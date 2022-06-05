@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "btree.h"
 
+#define COUNT 10
+
 struct Node {
     Item data;
     struct Node *left;
@@ -65,4 +67,34 @@ void preorder(Btree t) {
     putchar(' ');
 	preorder(figlioSX(t));
 	preorder(figlioDX(t));
+
+}
+
+static void print2DUtil(struct Node *root, int space) {
+    // Base case
+    if (root == NULL) return;
+ 
+    // Increase distance between levels
+    space += COUNT;
+ 
+    // Process right child first
+    print2DUtil(root->right, space);
+ 
+    // Print current node after space
+    // count
+    printf("\n");
+
+    for (int i = COUNT; i < space; i++)
+        printf(" ");
+
+    printf("%d\n", root->data);
+ 
+    // Process left child
+    print2DUtil(root->left, space);
+}
+ 
+// Wrapper over print2DUtil()
+void print2D(struct Node *root) {
+   // Pass initial space count as 0
+   print2DUtil(root, 0);
 }

@@ -19,3 +19,5 @@ struct Node *getRoot(Btree t);
 Btree consBtree(Item it, Btree sx, Btree dx);
 
 void preorder(Btree T);
+
+void print2D(struct Node *root);

@@ -17,10 +17,8 @@ int uguali(Btree t1, Btree t2);
 int uguali_diff(Btree t1, Btree t2, Diff *diff);
 
 int main(void) {
-    Btree a, b;
-
-    a = createBtree();
-    b = createBtree();
+    Btree a = createBtree();
+    // Btree b = createBtree();
 
     printf("Albero:\n");
     preorder(a);
@@ -42,19 +40,19 @@ int main(void) {
     // uguali(a, b) ? printf("\nI due alberi sono uguali\n")
     //              : printf("\nI due alberi non sono uguali\n");
 
-    Diff *d = malloc(sizeof(struct Diff));
-    d->livello = 0;
-    d->a = NULLITEM;
-    d->b = NULLITEM;
+    Diff d = {.livello = 0, .a = NULLITEM, .b = NULLITEM};
 
-    if (uguali_diff(a, spec, d)) {
+    if (uguali_diff(a, spec, &d)) {
         printf("\nI due alberi sono uguali\n");
     }
     else {
         printf("\nI due alberi non sono uguali");
-        printf("\nLivello: %d", d->livello);
-        printf("\nItem diversi: %d e %d\n", d->a, d->b);
+        printf("\nLivello: %d", d.livello);
+        printf("\nItem diversi: %d e %d\n", d.a, d.b);
     }
+
+    printf("\nStampa dell'albero:\n");
+    print2D(a);
 
     return 0;
 }
@@ -74,7 +72,7 @@ Btree createBtree(void) {
     f = consBtree(6, NULL, NULL);
     g = consBtree(12, NULL, NULL);
     b = consBtree(9, d, e);
-    c = consBtree(9, f, g);
+    c = consBtree(11, f, g);
     a = consBtree(10, b, c);
 
     return a;
