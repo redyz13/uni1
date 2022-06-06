@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "util.h"
 
 BST creaBST(void);
@@ -17,7 +18,7 @@ int main(void) {
     nodi_intervallo(bst, 5, 30);
 
     putchar('\n');
-
+    
     return 0;
 }
 
@@ -103,4 +104,13 @@ void nodi_intervallo(BST t, Item a, Item b) {
     if (isMinus(getItem(t), b)) {
         nodi_intervallo(figlioDX(t), a , b);
     }
+}
+
+Queue stampaLivello(BST t, Queue q, int k) {
+    if (k == 0) return q;
+
+    enqueue(q, t);
+
+    stampaLivello(figlioSX(t), q, k - 1);
+    stampaLivello(figlioDX(t), q, k - 1);
 }
