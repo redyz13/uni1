@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include "bst.h"
-
-#define NODES 10
+#include "util.h"
 
 BST creaBST(void);
 
