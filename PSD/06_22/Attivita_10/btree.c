@@ -87,6 +87,6 @@ static void print2DUtil(Btree root, int space) {
     print2DUtil(root->left, space);
 }
  
-void print2D(struct Node *root) {
+void print2D(Btree root) {
    print2DUtil(root, 0);
 }
