@@ -19,3 +19,7 @@ BST creaBST(void);
 int isBST(Btree t);
 
 void inserisciArray(BST t, Item *arr, int size);
+
+void nodiIntervallo(BST t, Item a, Item b);
+
+void nodi_intervallo(BST t, Item a, Item b);
