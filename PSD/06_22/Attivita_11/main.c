@@ -57,6 +57,7 @@ int isBST(Btree t) {
 void inserisciArray(BST t, Item *arr, int size) {
     static int i = 0;
     if (t == NULL) return;
+    if (i == size) return;
 
     inserisciArray(figlioSX(t), arr, size);
     arr[i] = getItem(t);
