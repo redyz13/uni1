@@ -18,4 +18,4 @@ BST creaBST(void);
 
 int isBST(Btree t);
 
-void inserisciArray(BST t, Item *arr);
+void inserisciArray(BST t, Item *arr, int size);

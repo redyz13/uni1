@@ -4,21 +4,23 @@
 BST creaBST(void);
 
 int main(void) {
-    // Btree t = T;
     BST bst = creaBST();
+
+    printf("\nAlbero binario di ricerca:\n");
 
     print2D(bst);
     
-    // printf("\nAlbero binario di ricerca: %d\n", isBST(t));
-    
     printf("\nAlbero ordinato: ");
 
-    Item arr[10];
+    Item arr[NODES];
+    int size = sizeof(arr) / sizeof(*arr);
 
-    inserisciArray(bst, arr);
+    inserisciArray(bst, arr, size);
 
     for (int i = 0; i < 10; i++)
         printf("%d ", arr[i]);
+
+    putchar('\n');
 
     return 0;
 }
@@ -52,11 +54,12 @@ int isBST(Btree t) {
     return isBST(figlioSX(t)) && isBST(figlioDX(t));
 }
 
-void inserisciArray(BST t, Item *arr) {
-    if(t == NULL) return;
+void inserisciArray(BST t, Item *arr, int size) {
+    static int i = 0;
+    if (t == NULL) return;
 
-    inserisciArray(figlioSX(t), arr);
-    *arr = getItem(t);
-    arr++;
-    inserisciArray(figlioDX(t), arr);
+    inserisciArray(figlioSX(t), arr, size);
+    arr[i] = getItem(t);
+    i++;
+    inserisciArray(figlioDX(t), arr, size);
 }
