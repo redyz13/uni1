@@ -20,4 +20,4 @@ Btree consBtree(Item it, Btree sx, Btree dx);
 
 void preorder(Btree T);
 
-void print2D(struct Node *root);
+void print2D(Btree root);
