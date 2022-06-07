@@ -32,3 +32,7 @@ BST arrToBST(BST t, int *arr, int size, int i);
 int getLivello(BST t);
 
 void nodiAltezza(BST t, Queue q, int l, int k);
+
+int contaNodi(BST t);
+
+int isMediano(BST t, Item it);

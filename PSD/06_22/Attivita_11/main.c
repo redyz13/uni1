@@ -30,7 +30,8 @@ int main(void) {
         putchar(' ');
     }
 
-    putchar('\n');
+    printf("\nNumero di nodi: %d", contaNodi(bst));
+    printf("\nMediano: %d", isMediano(bst, 5));
     
     return 0;
 }
@@ -154,4 +155,21 @@ void nodiAltezza(BST t, Queue q, int l, int k) {
 
     nodiAltezza(figlioSX(t), q, l - 1 , k);
     nodiAltezza(figlioDX(t), q, l - 1, k);
+}
+
+int contaNodi(BST t) {
+    if (t == NULL) return 0;
+
+    return 1 + contaNodi(figlioSX(t)) + contaNodi(figlioDX(t));
+}
+
+int isMediano(BST t, Item it) {
+    // if (t == NULL) return 0;
+    if (!contains(t, it)) return 0;
+
+    if (isEqual(getItem(t), it)) {
+        return contaNodi(figlioSX(t)) == contaNodi(figlioDX(t));
+    }
+
+    return isMediano(figlioSX(t), it) || isMediano(figlioDX(t), it);
 }
