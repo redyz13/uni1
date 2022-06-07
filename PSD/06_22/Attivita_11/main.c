@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include "util.h"
 
-BST creaBST(void);
-
 int main(void) {
     BST bst = creaBST();
 
@@ -16,6 +14,21 @@ int main(void) {
     printf("\nNodi dell'albero da 5 a 30: ");
 
     nodi_intervallo(bst, 5, 30);
+
+    printf("\nLivelli: %d\n", getLivello(bst));
+    
+    Queue q = newQueue();
+
+    printf("Nodi al livello 3: ");
+    nodiAltezza(bst, q, 3, 1);
+    
+    BST node; 
+
+    while(!isEmptyQueue(q)) {
+        node = dequeue(q);
+        printItem(getItem(node));
+        putchar(' ');
+    }
 
     putchar('\n');
     
@@ -106,11 +119,39 @@ void nodi_intervallo(BST t, Item a, Item b) {
     }
 }
 
-Queue stampaLivello(BST t, Queue q, int k) {
-    if (k == 0) return q;
+BST arrToBST(BST t, int *arr, int size, int i) {
+    int mid = ((i + size) / 2);
 
-    enqueue(q, t);
+    if (i >= size) return t; 
+    
+    t = insertNode(t, arr[mid]);
 
-    stampaLivello(figlioSX(t), q, k - 1);
-    stampaLivello(figlioDX(t), q, k - 1);
+    t = arrToBST(t, arr, i, mid);
+    t = arrToBST(t, arr, mid + 1, size);
+    return t;
+}
+
+int getLivello(BST t) {
+    if (t == NULL) return 0;
+
+    int liv_dx, liv_sx;
+
+    liv_dx = getLivello(figlioDX(t));
+    liv_sx = getLivello(figlioSX(t));
+
+    if (liv_dx < liv_sx) {
+        return 1 + liv_sx;
+    }
+    else {
+        return 1 + liv_dx;
+    }
+}
+
+void nodiAltezza(BST t, Queue q, int l, int k) {
+    if (t == NULL) return;
+    if (l == k) 
+        enqueue(q, t);
+
+    nodiAltezza(figlioSX(t), q, l - 1 , k);
+    nodiAltezza(figlioDX(t), q, l - 1, k);
 }
