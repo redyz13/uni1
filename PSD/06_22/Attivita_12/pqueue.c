@@ -80,7 +80,7 @@ int deleteMax(PQueue q) {
 }
 
 int insert(PQueue q, Key k) {
-    if (q == NULL || q->size == 0) return 0;
+    if (q == NULL || q->size == MAXPQ) return 0;
 
     (q->size)++;
 
