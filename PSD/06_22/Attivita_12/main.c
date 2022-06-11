@@ -31,6 +31,18 @@ int main(void) {
     printf("\nArray dopo heapify: ");
     stampaArray(arr, 7);
 
+    PQueue a = newPQ();
+    insert(a, 17); insert(a, 1); insert(a, 10);
+
+    printf("\n\nCoda 1: ");
+    printPQueue(q);
+    printf("\nCoda 2: ");
+    printPQueue(a);
+
+    PQueue mer = merge(q, a);
+    printf("\nCoda data dal merge: ");
+    printPQueue(mer);
+
     putchar('\n');
 
     return 0;
@@ -130,4 +142,56 @@ void heapify(int *arr, int size) {
             }
         }
     }
+}
+
+int push(PQueue q, Key k) {
+    if (k < getMax(q)) return 0;
+
+    insert(q, k);
+
+    return 1;
+}
+
+int pop(PQueue q) {
+    deleteMax(q);
+
+    return 1;
+}
+
+PQueue merge(PQueue q1, PQueue q2) {
+    if (isEmpty(q1) || isEmpty(q2)) return NULL;
+
+    PQueue new = newPQ();
+    PQueue tmp = newPQ();
+    Key k;
+
+    while (!isEmpty(q1)) {
+        k = getMax(q1);
+        insert(tmp, k);
+        insert(new, k);
+        deleteMax(q1);
+    }
+
+    while (!isEmpty(tmp)) {
+        k = getMax(tmp);
+        insert(q1, k);
+        deleteMax(tmp);
+    }
+
+    while (!isEmpty(q2)) {
+        k = getMax(q2);
+        insert(tmp, k);
+        insert(new, k);
+        deleteMax(q2);
+    }
+
+    while (!isEmpty(tmp)) {
+        k = getMax(tmp);
+        insert(q2, k);
+        deleteMax(tmp);
+    }
+
+    free(tmp);
+
+    return new;
 }
