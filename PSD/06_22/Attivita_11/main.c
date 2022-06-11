@@ -32,7 +32,14 @@ int main(void) {
 
     printf("\nNumero di nodi: %d", contaNodi(bst));
     printf("\nMediano: %d\n", isMediano(bst, 5));
+
+    printf("Gli archi tra %d e %d sono: %d\n", 5, 3, conta_archi(bst, 5, 3));
     
+    printf("L'antenato comune tra %d e %d è: ", 35, 25);
+    printItem(antenatoComune(bst, 35, 25));
+
+    putchar('\n');
+
     return 0;
 }
 
@@ -276,6 +283,4 @@ Item antenatoComune(BST t, Item it1, Item it2) {
     else {
         return getItem(t); 
     }
-
-    return NULLITEM;
 }
