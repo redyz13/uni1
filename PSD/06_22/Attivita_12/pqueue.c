@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "pqueue.h"
 
@@ -89,4 +90,14 @@ int insert(PQueue q, Key k) {
     sali(q);
 
     return 1;
+}
+
+void printPQueue(PQueue q) {
+    int i = 1;
+
+    while (i <= q->size) {
+        printKey(q->vet[i]);
+        putchar(' ');
+        i++;
+    }
 }
