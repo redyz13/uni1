@@ -56,10 +56,10 @@ int contains(BST t, Item it) {
     if (isEqual(getItem(t), it)) return 1;
 
     if (isMinus(getItem(t), it)) {
-        return contains(t->left, it);
+        return contains(t->right, it);
     }
     else {
-        return contains(t->right, it);
+        return contains(t->left, it);
     }
 }
 
