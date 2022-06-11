@@ -5,7 +5,7 @@
 int main(void) {
     BST bst = creaBST();
 
-    printf("\nAlbero binario di ricerca:\n");
+    printf("Albero binario di ricerca:\n");
 
     print2D(bst);
     
@@ -31,7 +31,7 @@ int main(void) {
     }
 
     printf("\nNumero di nodi: %d", contaNodi(bst));
-    printf("\nMediano: %d", isMediano(bst, 5));
+    printf("\nMediano: %d\n", isMediano(bst, 5));
     
     return 0;
 }
@@ -164,12 +164,118 @@ int contaNodi(BST t) {
 }
 
 int isMediano(BST t, Item it) {
-    // if (t == NULL) return 0;
-    if (!contains(t, it)) return 0;
+    if (t == NULL) return 0;
 
-    if (isEqual(getItem(t), it)) {
-        return contaNodi(figlioSX(t)) == contaNodi(figlioDX(t));
+    if (contains(t, it)) {
+        if (figlioSX(t) == NULL && figlioDX(t) == NULL) return 1;
+        if (isEqual(it, getItem(t))) {
+            return (contaNodi(figlioSX(t)) == contaNodi(figlioDX(t)));
+        }
+        else {
+            return isMediano(figlioSX(t), it) || isMediano(figlioDX(t), it);
+        }
     }
 
-    return isMediano(figlioSX(t), it) || isMediano(figlioDX(t), it);
+    return 0;
+}
+
+int conta_elementi(Queue q) {
+    Queue tmp = newQueue();
+    BST node; 
+    int count = 0;
+
+    while (!isEmptyQueue(q)) {
+        node = dequeue(q);
+        count++;
+        enqueue(tmp, node);
+    }
+
+    while (!isEmptyQueue(tmp)) {
+        node = dequeue(tmp);
+        enqueue(q, node);
+    }
+
+    return count;
+}
+
+int archi(Queue q1, Queue q2) {
+    BST node1, node2;
+    int count = 0, count1, count2, num_archi;
+
+    count1 = conta_elementi(q1);
+    count2 = conta_elementi(q2);
+    
+    enqueue(q2, NULL);
+
+    while (!isEmptyQueue(q1)) {
+        node1 = dequeue(q1);
+
+        while (1) {
+            node2 = dequeue(q2);
+
+            if (node2 == NULL) {
+                break;
+            }
+
+            if (isEqual(getItem(node1), getItem(node2))) {
+                count++;
+            }
+
+            enqueue(q2, node2);
+        }
+
+        enqueue(q2, NULL);
+    }
+
+    num_archi = (count1 + count2) - (2 * count);
+
+    return num_archi;
+}
+
+void conta(BST t, Item it, Queue q) {
+    if (t == NULL) return;
+    
+    if (!(isEqual(getItem(t), it))) {
+        if (contains(figlioDX(t), it)) {
+            conta(figlioDX(t), it, q);
+            enqueue(q, t);
+        }
+        else if (contains(figlioSX(t), it)) {
+            conta(figlioSX(t), it, q);
+            enqueue(q, t);
+        }
+    }
+    else {
+        enqueue(q, t);
+        return;
+    }
+
+    return;
+}
+
+int conta_archi(BST t, Item it1, Item it2) {
+    Queue cu = newQueue();
+    Queue cucu = newQueue();
+    conta(t, it1, cu);
+    conta(t, it2, cucu);
+    
+    return archi(cu, cucu);
+}
+
+Item antenatoComune(BST t, Item it1, Item it2) {
+    if (t == NULL) return NULLITEM;
+
+    if (it1 == it2) return it1;
+
+    if (contains(figlioSX(t), it1) && contains(figlioSX(t), it2)) {
+        antenatoComune(figlioSX(t), it1, it2);
+    }
+    else if (contains(figlioDX(t), it1) && contains(figlioDX(t), it2)) {
+        antenatoComune(figlioDX(t), it1, it2);
+    }
+    else {
+        return getItem(t); 
+    }
+
+    return NULLITEM;
 }

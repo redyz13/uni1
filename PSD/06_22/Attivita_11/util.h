@@ -36,3 +36,13 @@ void nodiAltezza(BST t, Queue q, int l, int k);
 int contaNodi(BST t);
 
 int isMediano(BST t, Item it);
+
+int conta_elementi(Queue q);
+
+int archi(Queue q1, Queue q2);
+
+void conta(BST t, Item it, Queue q);
+
+int conta_archi(BST t, Item it1, Item it2);
+
+Item antenatoComune(BST t, Item it1, Item it2);
