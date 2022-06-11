@@ -158,6 +158,7 @@ int uguali_diff(Btree t1, Btree t2, Diff *diff) {
     return 0;
 }
 
+/* Da implementare nell'ADT
 Btree aggiungiNodo(Btree t, Item nodo) {
     if (isEmpty(t)) {
         return consBtree(nodo, NULL, NULL);
@@ -191,4 +192,4 @@ Btree aggiungiNodo(Btree t, Item nodo) {
     }
 
     return NULL;
-}
+} */
