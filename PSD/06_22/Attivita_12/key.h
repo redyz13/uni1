@@ -8,6 +8,8 @@ typedef int Key;
 
 void printKey(Key it);
 
+void printKeyAsChar(Key it);
+
 int isEqual(Key k1, Key k2);
 
 int isMinus(Key k1, Key k2);

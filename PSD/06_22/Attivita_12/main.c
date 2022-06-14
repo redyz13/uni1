@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "util.h"
 
 int main(void) {
@@ -42,6 +43,9 @@ int main(void) {
     PQueue mer = merge(q, a);
     printf("\nCoda data dal merge: ");
     printPQueue(mer);
+
+    printf("\nStampa stringa: ");
+    cosaNarducci("P R I O * R * * I * T * Y * * * Q U E * * * U * E");
 
     putchar('\n');
 
@@ -194,4 +198,20 @@ PQueue merge(PQueue q1, PQueue q2) {
     free(tmp);
 
     return new;
+}
+
+void cosaNarducci(char *s) {
+    PQueue q = newPQ();
+
+    while (*s) {
+        if (isalpha(*s)) {
+            insert(q, *s);
+        }
+        else if (*s == '*') {
+            printKeyAsChar(getMax(q));
+            putchar(' ');
+            deleteMax(q);
+        }
+        s++;
+    }
 }

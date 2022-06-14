@@ -17,3 +17,5 @@ int push(PQueue q, Key k);
 int pop(PQueue q);
 
 PQueue merge(PQueue q1, PQueue q2);
+
+void cosaNarducci(char *s);

@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include "key.h"
 
-void printKey(Key it){
-    printf("%d", it);
+void printKey(Key k){
+    printf("%d", k);
+}
+
+void printKeyAsChar(Key k) {
+    printf("%c", k);
 }
 
 int isEqual(Key k1, Key k2) {
