@@ -109,6 +109,4 @@ void stampa_file(void) {
     }
 
     fclose(f_in);
-
-    return;
 }
